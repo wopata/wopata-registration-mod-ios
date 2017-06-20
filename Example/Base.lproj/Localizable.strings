@@ -8,3 +8,13 @@
 
 "LandingCTAText" = "Commencer";
 "LandingText" = "Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi";
+
+"SignInTitle" = "Se connecter";
+"LoginWithGoogle" = "Se connecter avec Google";
+"LoginWithFacebook" = "Se connecter avec Facebook";
+"EmailAddress" = "Adresse email";
+"Password" = "Mot de passe";
+"LoginButtonTitle" = "Se connecter";
+"LoginResetTitle" = "Mot de passe oublié ?";
+
+"OR" = "Ou";

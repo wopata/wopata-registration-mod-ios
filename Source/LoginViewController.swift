@@ -11,6 +11,8 @@ import SnapKit
 
 // Landing View Controller
 public class LoginViewController: UIViewController {
+    public var navigationBarTintColor: UIColor? { return .clear }
+
     let config: LoginConfiguration
 
     init(config: LoginConfiguration) {
@@ -25,6 +27,7 @@ public class LoginViewController: UIViewController {
 
     public override func loadView() {
         super.loadView()
+        setupNavigation()
 
         let backgroundImage = UIImageView(image: config.landingBackgroundImage)
         view.addSubview(backgroundImage)
@@ -77,21 +80,21 @@ public class LoginViewController: UIViewController {
             ])
         text.attributedText = attributedString
 
+        title = ""
+    }
+
+    private func setupNavigation() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.tintColor = .white
 
         let close = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stop))
-        if navigationItem.rightBarButtonItems == nil {
-            navigationItem.rightBarButtonItem = close
-        } else {
-            navigationItem.rightBarButtonItems?.append(close)
-        }
+        navigationItem.rightBarButtonItem = close
     }
 
     func start() {
-
+        navigationController?.pushViewController(SignInViewController(config: config), animated: true)
     }
 
     func stop() {
