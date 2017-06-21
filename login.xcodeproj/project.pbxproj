@@ -12,6 +12,8 @@
 		F0B21EC81EF965540039DB3E /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21EC71EF965540039DB3E /* InputField.swift */; };
 		F0B21ECC1EFA738F0039DB3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */; };
 		F0B21ECE1EFA9D300039DB3E /* SHKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21ECD1EFA9D300039DB3E /* SHKeyboardViewController.swift */; };
+		F0B21ED01EFAB7860039DB3E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21ECF1EFAB7860039DB3E /* SignUpViewController.swift */; };
+		F0B21ED21EFABAE20039DB3E /* ButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21ED11EFABAE20039DB3E /* ButtonBuilder.swift */; };
 		F0E2DE421EF90CD0007DD38A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */; };
 		F0E2DE431EF90CD0007DD38A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */; };
 		F0E2DE461EF90CD0007DD38A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE401EF90CD0007DD38A /* Info.plist */; };
@@ -34,6 +36,8 @@
 		F0B21EC71EF965540039DB3E /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F0B21ECD1EFA9D300039DB3E /* SHKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHKeyboardViewController.swift; sourceTree = "<group>"; };
+		F0B21ECF1EFAB7860039DB3E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F0B21ED11EFABAE20039DB3E /* ButtonBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBuilder.swift; sourceTree = "<group>"; };
 		F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Example/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Example/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F0E2DE401EF90CD0007DD38A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Example/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -116,7 +120,9 @@
 				F0E2DE491EF90CE3007DD38A /* Login.swift */,
 				F0E2DE4A1EF90CE3007DD38A /* LoginViewController.swift */,
 				F0E2DE581EF94FF6007DD38A /* SignInViewController.swift */,
+				F0B21ECF1EFAB7860039DB3E /* SignUpViewController.swift */,
 				F0B21EC71EF965540039DB3E /* InputField.swift */,
+				F0B21ED11EFABAE20039DB3E /* ButtonBuilder.swift */,
 				F0B21EC51EF95C190039DB3E /* Images.xcassets */,
 				F0B21ECD1EFA9D300039DB3E /* SHKeyboardViewController.swift */,
 			);
@@ -252,7 +258,9 @@
 			files = (
 				F0E2DE4C1EF90CE3007DD38A /* LoginViewController.swift in Sources */,
 				F0E2DE4B1EF90CE3007DD38A /* Login.swift in Sources */,
+				F0B21ED01EFAB7860039DB3E /* SignUpViewController.swift in Sources */,
 				F0E2DE471EF90CD0007DD38A /* ViewController.swift in Sources */,
+				F0B21ED21EFABAE20039DB3E /* ButtonBuilder.swift in Sources */,
 				F0E2DE591EF94FF6007DD38A /* SignInViewController.swift in Sources */,
 				F0E2DE421EF90CD0007DD38A /* AppDelegate.swift in Sources */,
 				F0B21EC81EF965540039DB3E /* InputField.swift in Sources */,

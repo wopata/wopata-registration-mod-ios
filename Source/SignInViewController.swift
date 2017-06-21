@@ -16,13 +16,6 @@ import GoogleSignIn
 
 class SignInViewController: SHKeyboardViewController {
 
-    let bundle: Bundle? = {
-        return nil
-        let navigationBundle = Bundle(for: SignInViewController.self)
-        let bundleURL = navigationBundle.url(forResource: "Images", withExtension: "bundle")!
-        return Bundle(url: bundleURL)!
-    }()
-
     let config: LoginConfiguration
 
     var signedIn: ((User) -> Void)?
@@ -64,21 +57,17 @@ class SignInViewController: SHKeyboardViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        title = NSLocalizedString("SignInTitle", comment: "Se connecter")
+        setColors()
         super.viewWillAppear(animated)
-        animate()
     }
 
-    private func animate() {
-        guard let coordinator = self.transitionCoordinator else {
-            return
-        }
-        coordinator.animate(alongsideTransition: {
-            [weak self] context in
-            self?.setColors()
-            }, completion: nil)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        title = ""
     }
 
-    private func setColors(){
+    private func setColors() {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.isTranslucent = false
@@ -93,8 +82,7 @@ class SignInViewController: SHKeyboardViewController {
         setColors()
 
         view.backgroundColor = UIColor(red: 250.0/255, green: 250.0/255, blue: 250.0/255, alpha: 1)
-        title = NSLocalizedString("SignInTitle", comment: "Se connecter")
-
+        ButtonBuilder.shared.config = config
 
         scrollView = UIScrollView()
         scrollView.keyboardDismissMode = .onDrag
@@ -110,7 +98,8 @@ class SignInViewController: SHKeyboardViewController {
             $0.width.height.equalTo(view)
         }
 
-        let google = buildGoogleButton()
+        let google = ButtonBuilder.shared.googleButton(title: NSLocalizedString("LoginWithGoogle", comment: "Se connecter avec Google"))
+        google.addTarget(self, action: #selector(loginWithGoogle), for: .touchUpInside)
         container.addSubview(google)
         google.snp.makeConstraints {
             $0.left.top.equalTo(35)
@@ -118,7 +107,8 @@ class SignInViewController: SHKeyboardViewController {
             $0.height.equalTo(45)
         }
 
-        let facebook = buildFacebookButton()
+        let facebook = ButtonBuilder.shared.facebookButton(title: NSLocalizedString("LoginWithFacebook", comment: "Se connecter avec Facebook"))
+        facebook.addTarget(self, action: #selector(loginWithFacebook), for: .touchUpInside)
         container.addSubview(facebook)
         facebook.snp.makeConstraints {
             $0.left.equalTo(35)
@@ -127,7 +117,7 @@ class SignInViewController: SHKeyboardViewController {
             $0.top.equalTo(google.snp.bottom).offset(12)
         }
 
-        let or = buildOrSeparator()
+        let or = ButtonBuilder.shared.orSeparator()
         container.addSubview(or)
         or.snp.makeConstraints {
             $0.left.equalTo(35)
@@ -156,7 +146,8 @@ class SignInViewController: SHKeyboardViewController {
         pwd.valueChanged = { self.pwdValue = $0 }
         email.returnKeyPressed = { _ = pwd.becomeFirstResponder() }
 
-        button = buildButton()
+        button = ButtonBuilder.shared.mainButton(title: NSLocalizedString("LoginButtonTitle", comment: "Se connecter"))
+        button.addTarget(self, action: #selector(loginWithEmail), for: .touchUpInside)
         container.addSubview(button)
         button.snp.makeConstraints {
             $0.left.equalTo(35)
@@ -165,7 +156,7 @@ class SignInViewController: SHKeyboardViewController {
             $0.top.equalTo(pwd.snp.bottom).offset(40)
         }
 
-        let reset = buildResetButton()
+        let reset = ButtonBuilder.shared.resetButton()
         container.addSubview(reset)
         reset.snp.makeConstraints {
             $0.left.equalTo(35)
@@ -174,156 +165,13 @@ class SignInViewController: SHKeyboardViewController {
             $0.top.equalTo(button.snp.bottom)
         }
 
-        let footer = buildFooter()
+        let footer = ButtonBuilder.shared.footer(title1: NSLocalizedString("LoginNoAccount", comment: "Pas encore de compte"), title2: NSLocalizedString("LoginRegister", comment: "Inscription"))
+        footer.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         container.addSubview(footer)
         footer.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
             $0.height.equalTo(60)
         }
-    }
-
-    private func buildGoogleButton() -> UIView {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "google-icon", in: bundle, compatibleWith: nil), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.addTarget(self, action: #selector(loginWithGoogle), for: .touchUpInside)
-
-        let title = NSLocalizedString("LoginWithGoogle", comment: "Se connecter avec Google")
-        let attributedString = NSMutableAttributedString(
-            string: title,
-            attributes: [
-                NSForegroundColorAttributeName: UIColor.black,
-                NSFontAttributeName: config.font.withSize(15)
-            ])
-        if let range = title.range(of: "Google") {
-            let nsrange = title.nsRange(from: range)
-            attributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 15, weight: UIFontWeightBold), range: nsrange)
-        }
-        button.setAttributedTitle(attributedString, for: .normal)
-
-        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 17, right: 0)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 3
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
-
-        return button
-    }
-
-    private func buildFacebookButton() -> UIView {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "facebook-icon", in: bundle, compatibleWith: nil), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.addTarget(self, action: #selector(loginWithFacebook), for: .touchUpInside)
-
-        let title = NSLocalizedString("LoginWithFacebook", comment: "Se connecter avec Facebook")
-        let attributedString = NSMutableAttributedString(
-            string: title,
-            attributes: [
-                NSForegroundColorAttributeName: UIColor.white,
-                NSFontAttributeName: config.font.withSize(15)
-            ])
-        if let range = title.range(of: "Facebook") {
-            let nsrange = title.nsRange(from: range)
-            attributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 15, weight: UIFontWeightBold), range: nsrange)
-        }
-        button.setAttributedTitle(attributedString, for: .normal)
-
-        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 17, right: 10)
-        button.backgroundColor = UIColor(red: 59.0/255, green: 89.0/255, blue: 152.0/255, alpha: 1)
-        button.layer.cornerRadius = 3
-
-        return button
-    }
-
-    private func buildOrSeparator() -> UIView {
-        let container = UIView()
-
-        let line1 = UIView()
-        line1.backgroundColor = UIColor(white: 0, alpha: 0.15)
-        container.addSubview(line1)
-        let line2 = UIView()
-        line2.backgroundColor = UIColor(white: 0, alpha: 0.15)
-        container.addSubview(line2)
-
-        let label = UILabel()
-        label.text = NSLocalizedString("OR", comment: "ou").uppercased()
-        label.textColor = UIColor(white: 0, alpha: 0.5)
-        label.font = config.font.withSize(12)
-        container.addSubview(label)
-
-        line1.snp.makeConstraints {
-            $0.height.equalTo(1)
-            $0.centerY.left.equalToSuperview()
-            $0.right.equalTo(label.snp.left).offset(-14)
-        }
-        line2.snp.makeConstraints {
-            $0.height.equalTo(1)
-            $0.centerY.right.equalToSuperview()
-            $0.left.equalTo(label.snp.right).offset(14)
-        }
-        label.snp.makeConstraints {
-            $0.centerX.top.bottom.equalToSuperview()
-        }
-
-        return container
-    }
-
-    private func buildButton() -> UIButton {
-        let button = UIButton(type: .system)
-        button.setTitle(NSLocalizedString("LoginButtonTitle", comment: "Se connecter").uppercased(), for: .normal)
-        button.backgroundColor = config.ctaBackgroundColor
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = config.ctaFont.withSize(15)
-        button.layer.cornerRadius = 3
-        button.addTarget(self, action: #selector(loginWithEmail), for: .touchUpInside)
-
-        return button
-    }
-
-    private func buildResetButton() -> UIView {
-        let button = UIButton(type: .system)
-        button.setTitle(NSLocalizedString("LoginResetTitle", comment: "Mot de passe oublié ?"), for: .normal)
-        button.backgroundColor = .clear
-        button.setTitleColor(UIColor(white: 0, alpha: 0.5), for: .normal)
-        button.titleLabel?.font = config.font.withSize(14)
-
-        return button
-    }
-
-    private func buildFooter() -> UIView {
-        let view = UIView()
-        view.layer.shadowColor = UIColor(red: 216.0/255, green: 216.0/255, blue: 216.0/255, alpha: 1).cgColor
-        view.layer.shadowRadius = 5
-        view.layer.shadowOpacity = 1
-        view.layer.shadowOffset = .zero
-        view.backgroundColor = .white
-
-        let attributedString = NSMutableAttributedString(
-            string: NSLocalizedString("LoginNoAccount", comment: "Pas encore de compte"),
-            attributes: [
-                NSForegroundColorAttributeName: UIColor.black,
-                NSFontAttributeName: config.font.withSize(15)
-            ])
-        attributedString.append(NSAttributedString(string: " "))
-        attributedString.append(NSAttributedString(
-            string: NSLocalizedString("LoginRegister", comment: "Inscription"),
-            attributes: [
-                NSForegroundColorAttributeName: config.ctaBackgroundColor,
-                NSFontAttributeName: config.font.withSize(15).bold(),
-                NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue
-            ]))
-        let button = UIButton(type: .custom)
-        button.setAttributedTitle(attributedString, for: .normal)
-        button.setImage(UIImage(named: "info-icon", in: bundle, compatibleWith: nil), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-
-        view.addSubview(button)
-        button.snp.makeConstraints { $0.edges.equalToSuperview() }
-
-        button.imageEdgeInsets = UIEdgeInsets(top: 22, left: 0, bottom: 23, right: 10)
-
-        return view
     }
 
     private func updateButton() {
@@ -363,5 +211,12 @@ extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user:GIDGoogleUser!,
                 withError error: Error!) {
         // uh... nothing?
+    }
+
+    func signUp() {
+        let controller = SignUpViewController(config: config)
+        controller.signedIn = signedIn
+        controller.signedUp = signedUp
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

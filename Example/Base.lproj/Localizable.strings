@@ -19,6 +19,13 @@
 "LoginNoAccount" = "Pas encore de compte ?";
 "LoginRegister" = "Inscription";
 
+"SignUpTitle" = "S'inscrire";
+"SignupWithGoogle" = "Se connecter avec Google";
+"SignupWithFacebook" = "Se connecter avec Facebook";
+"SignupButtonTitle" = "S'inscrire";
+"SignupWithAccount" = "Déjà un compte ?";
+"SignupConnect" = "Connexion";
+
 "ErrorEmailEmpty" = "L'email ne doit pas être vide";
 "ErrorEmailInvalid" = "L'email est invalide";
 "ErrorPasswordEmpty" = "Le mot de passe ne doit pas être vide";

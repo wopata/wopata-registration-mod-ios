@@ -47,6 +47,18 @@ class ViewController: UIViewController {
             self.signedIn.isHidden = false
             self.dismiss(animated: true)
         }
+        controller.signedUp = { user in
+            switch user.source {
+            case .facebook:
+                self.signedIn.text = "Facebook user token:\n\(user.token!)"
+            case .google:
+                self.signedIn.text = "Google user token:\n\(user.token!)"
+            case .native:
+                self.signedIn.text = "Native user\nemail: \(user.email!)\npassword: \(user.password!)"
+            }
+            self.signedIn.isHidden = false
+            self.dismiss(animated: true)
+        }
     }
 }
 
