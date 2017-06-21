@@ -10,11 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var once = false
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+    @IBOutlet weak var signedIn: UILabel!
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -24,12 +20,9 @@ class ViewController: UIViewController {
         login()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func login() {
+        signedIn.text = nil
+
         let config = LoginConfiguration.default
         config.landingBackgroundImage = #imageLiteral(resourceName: "background")
 
@@ -45,12 +38,13 @@ class ViewController: UIViewController {
         controller.signedIn = { user in
             switch user.source {
             case .facebook:
-                print("Facebook user token: \(user.token!)")
+                self.signedIn.text = "Facebook user token:\n\(user.token!)"
             case .google:
-                print("Google user token: \(user.token!)")
+                self.signedIn.text = "Google user token:\n\(user.token!)"
             case .native:
-                print("Native user email: \(user.email!), password: \(user.password!)")
+                self.signedIn.text = "Native user\nemail: \(user.email!)\npassword: \(user.password!)"
             }
+            self.signedIn.isHidden = false
         }
     }
 }

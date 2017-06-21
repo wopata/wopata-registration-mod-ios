@@ -28,13 +28,28 @@
                                     <action selector="login" destination="BYZ-38-t0r" eventType="touchUpInside" id="COU-Yl-cda"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XX8-SM-l4b">
+                                <rect key="frame" x="35" y="70" width="305" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="2Mv-UP-9nt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="XX8-SM-l4b" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="HSv-6c-mZ9"/>
+                            <constraint firstAttribute="trailing" secondItem="XX8-SM-l4b" secondAttribute="trailing" constant="35" id="kzU-P2-1zD"/>
                             <constraint firstItem="EVX-FH-Hp9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qKd-3L-Ty1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EVX-FH-Hp9" secondAttribute="bottom" constant="20" id="qjr-B3-cir"/>
+                            <constraint firstItem="XX8-SM-l4b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="35" id="tXt-hg-pUT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="signedIn" destination="XX8-SM-l4b" id="MTt-3c-EZw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

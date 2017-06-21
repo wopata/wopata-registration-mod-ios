@@ -17,6 +17,15 @@ class InputField: UIView, UITextFieldDelegate {
     var value: String? = nil
     var label: String = ""
 
+    var valueChanged: ((String?) -> Void)?
+    var returnKeyPressed: (() -> Void)!
+
+    override var tintColor: UIColor! {
+        didSet {
+            field.tintColor = tintColor
+        }
+    }
+
     init(font: UIFont, label: String, value: String? = nil) {
         super.init(frame: .zero)
         self.font = font
@@ -34,6 +43,11 @@ class InputField: UIView, UITextFieldDelegate {
         field.delegate = self
         field.font = font
         field.text = value
+
+        returnKeyPressed = {
+            self.field.resignFirstResponder()
+        }
+        
         addSubview(field)
         field.snp.makeConstraints {
             $0.top.equalTo(25)
@@ -50,7 +64,6 @@ class InputField: UIView, UITextFieldDelegate {
         }
 
         legend.text = label
-        legend.textColor = .black
         legend.isUserInteractionEnabled = false
         legend.font = font.withSize(17)
         addSubview(legend)
@@ -58,13 +71,13 @@ class InputField: UIView, UITextFieldDelegate {
             $0.left.equalToSuperview()
         }
         if field.text?.isEmpty == false {
-            legend.alpha = 0.35
+            self.legend.textColor = self.tintColor
             self.legend.transform = CGAffineTransform(scaleX: 0.82, y: 0.82)
             legend.snp.makeConstraints {
                 $0.top.equalToSuperview()
             }
         } else {
-            legend.alpha = 0.5
+            legend.textColor = UIColor(white: 0, alpha: 0.5)
             legend.snp.makeConstraints {
                 $0.top.equalTo(field)
             }
@@ -84,7 +97,7 @@ class InputField: UIView, UITextFieldDelegate {
         }
 
         UIView.animate(withDuration: 0.3) {
-            self.legend.alpha = 0.35
+            self.legend.textColor = self.tintColor
             self.legend.transform = CGAffineTransform(scaleX: 0.82, y: 0.82).translatedBy(x: -self.offset, y: 0)
             self.layoutIfNeeded()
         }
@@ -103,16 +116,27 @@ class InputField: UIView, UITextFieldDelegate {
 
         UIView.animate(withDuration: 0.3) {
             if self.field.text?.isEmpty == false {
-                self.legend.alpha = 0.35
+                self.legend.textColor = self.tintColor
                 self.legend.transform = CGAffineTransform(scaleX: 0.82, y: 0.82).translatedBy(x: -self.offset, y: 0)
             } else {
-                self.legend.alpha = 0.5
+                self.legend.textColor = UIColor(white: 0, alpha: 0.5)
                 self.legend.transform = .identity
             }
             self.legend.layoutIfNeeded()
             self.layoutIfNeeded()
         }
+
+        valueChanged?(self.field.text)
         return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        returnKeyPressed()
+        return true
+    }
+
+    override func becomeFirstResponder() -> Bool {
+        return field.becomeFirstResponder()
     }
 }
 
@@ -121,6 +145,7 @@ class EmailField: InputField {
         self.init(font: font, label: NSLocalizedString("EmailAddress", comment: "Adresse email"), value: nil)
         field.isSecureTextEntry = false
         field.keyboardType = .emailAddress
+        field.returnKeyType = .next
     }
 }
 
@@ -129,5 +154,6 @@ class PasswordField: InputField {
         self.init(font: font, label: NSLocalizedString("Password", comment: "Mot de passe"), value: nil)
         field.isSecureTextEntry = true
         field.keyboardType = .default
+        field.returnKeyType = .done
     }
 }

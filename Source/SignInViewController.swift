@@ -14,7 +14,7 @@ import FBSDKCoreKit
 
 import GoogleSignIn
 
-class SignInViewController: UIViewController {
+class SignInViewController: SHKeyboardViewController {
 
     let bundle: Bundle? = {
         return nil
@@ -27,6 +27,13 @@ class SignInViewController: UIViewController {
 
     var signedIn: ((User) -> Void)?
     var signedUp: ((User) -> Void)?
+
+    var emailValue: String? { didSet { updateButton() } }
+    var pwdValue: String? { didSet { updateButton() } }
+    var button: UIButton!
+
+    var scrollView: UIScrollView!
+    
 
     init(config: LoginConfiguration) {
         self.config = config
@@ -43,6 +50,10 @@ class SignInViewController: UIViewController {
 
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
+
+        registerKeyboardNotifications(for: scrollView)
+
+        updateButton()
     }
 
     override func willMove(toParentViewController parent: UIViewController?) {
@@ -80,11 +91,27 @@ class SignInViewController: UIViewController {
     override func loadView() {
         super.loadView()
         setColors()
+
         view.backgroundColor = UIColor(red: 250.0/255, green: 250.0/255, blue: 250.0/255, alpha: 1)
         title = NSLocalizedString("SignInTitle", comment: "Se connecter")
 
+
+        scrollView = UIScrollView()
+        scrollView.keyboardDismissMode = .onDrag
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+
+        let container = UIView()
+        scrollView.addSubview(container)
+        container.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.height.equalTo(view)
+        }
+
         let google = buildGoogleButton()
-        view.addSubview(google)
+        container.addSubview(google)
         google.snp.makeConstraints {
             $0.left.top.equalTo(35)
             $0.centerX.equalToSuperview()
@@ -92,7 +119,7 @@ class SignInViewController: UIViewController {
         }
 
         let facebook = buildFacebookButton()
-        view.addSubview(facebook)
+        container.addSubview(facebook)
         facebook.snp.makeConstraints {
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
@@ -101,7 +128,7 @@ class SignInViewController: UIViewController {
         }
 
         let or = buildOrSeparator()
-        view.addSubview(or)
+        container.addSubview(or)
         or.snp.makeConstraints {
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
@@ -109,23 +136,28 @@ class SignInViewController: UIViewController {
         }
 
         let email = EmailField(font: config.font)
-        view.addSubview(email)
+        email.tintColor = config.ctaBackgroundColor
+        container.addSubview(email)
         email.snp.makeConstraints {
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
             $0.top.equalTo(or.snp.bottom).offset(40)
         }
+        email.valueChanged = { self.emailValue = $0 }
 
         let pwd = PasswordField(font: config.font)
-        view.addSubview(pwd)
+        pwd.tintColor = config.ctaBackgroundColor
+        container.addSubview(pwd)
         pwd.snp.makeConstraints {
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
             $0.top.equalTo(email.snp.bottom).offset(15)
         }
+        pwd.valueChanged = { self.pwdValue = $0 }
+        email.returnKeyPressed = { _ = pwd.becomeFirstResponder() }
 
-        let button = buildButton()
-        view.addSubview(button)
+        button = buildButton()
+        container.addSubview(button)
         button.snp.makeConstraints {
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
@@ -134,7 +166,7 @@ class SignInViewController: UIViewController {
         }
 
         let reset = buildResetButton()
-        view.addSubview(reset)
+        container.addSubview(reset)
         reset.snp.makeConstraints {
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
@@ -143,12 +175,11 @@ class SignInViewController: UIViewController {
         }
 
         let footer = buildFooter()
-        view.addSubview(footer)
+        container.addSubview(footer)
         footer.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
             $0.height.equalTo(60)
         }
-
     }
 
     private func buildGoogleButton() -> UIView {
@@ -238,13 +269,14 @@ class SignInViewController: UIViewController {
         return container
     }
 
-    private func buildButton() -> UIView {
+    private func buildButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(NSLocalizedString("LoginButtonTitle", comment: "Se connecter").uppercased(), for: .normal)
         button.backgroundColor = config.ctaBackgroundColor
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = config.ctaFont.withSize(15)
         button.layer.cornerRadius = 3
+        button.addTarget(self, action: #selector(loginWithEmail), for: .touchUpInside)
 
         return button
     }
@@ -293,6 +325,17 @@ class SignInViewController: UIViewController {
 
         return view
     }
+
+    private func updateButton() {
+        let enabled = emailValue?.isEmpty == false && pwdValue?.isEmpty == false
+        button.isEnabled = enabled
+        button.alpha = enabled ? 1 : 0.7
+    }
+
+    override func keyboardWillShow(_ notification: Notification) {
+        super.keyboardWillShow(notification)
+        scrollView.contentOffset = CGPoint(x: 0, y: 190)
+    }
 }
 
 extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
@@ -307,6 +350,11 @@ extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
 
     func loginWithGoogle() {
         GIDSignIn.sharedInstance().signIn()
+    }
+
+    func loginWithEmail() {
+        self.signedIn?(User(source: .native, email: emailValue, password: pwdValue))
+        dismiss(animated: true)
     }
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {

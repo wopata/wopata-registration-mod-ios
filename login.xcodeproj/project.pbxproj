@@ -11,6 +11,7 @@
 		F0B21EC61EF95C190039DB3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0B21EC51EF95C190039DB3E /* Images.xcassets */; };
 		F0B21EC81EF965540039DB3E /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21EC71EF965540039DB3E /* InputField.swift */; };
 		F0B21ECC1EFA738F0039DB3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */; };
+		F0B21ECE1EFA9D300039DB3E /* SHKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21ECD1EFA9D300039DB3E /* SHKeyboardViewController.swift */; };
 		F0E2DE421EF90CD0007DD38A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */; };
 		F0E2DE431EF90CD0007DD38A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */; };
 		F0E2DE461EF90CD0007DD38A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE401EF90CD0007DD38A /* Info.plist */; };
@@ -32,6 +33,7 @@
 		F0B21EC51EF95C190039DB3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F0B21EC71EF965540039DB3E /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F0B21ECD1EFA9D300039DB3E /* SHKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHKeyboardViewController.swift; sourceTree = "<group>"; };
 		F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Example/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Example/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F0E2DE401EF90CD0007DD38A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Example/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -116,6 +118,7 @@
 				F0E2DE581EF94FF6007DD38A /* SignInViewController.swift */,
 				F0B21EC71EF965540039DB3E /* InputField.swift */,
 				F0B21EC51EF95C190039DB3E /* Images.xcassets */,
+				F0B21ECD1EFA9D300039DB3E /* SHKeyboardViewController.swift */,
 			);
 			path = Source;
 			sourceTree = SOURCE_ROOT;
@@ -253,6 +256,7 @@
 				F0E2DE591EF94FF6007DD38A /* SignInViewController.swift in Sources */,
 				F0E2DE421EF90CD0007DD38A /* AppDelegate.swift in Sources */,
 				F0B21EC81EF965540039DB3E /* InputField.swift in Sources */,
+				F0B21ECE1EFA9D300039DB3E /* SHKeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
