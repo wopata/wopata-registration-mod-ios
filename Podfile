@@ -8,4 +8,6 @@ target 'login' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
+
+  pod 'Google/SignIn'
 end

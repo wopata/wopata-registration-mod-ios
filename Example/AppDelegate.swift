@@ -8,16 +8,21 @@
 
 import UIKit
 import FBSDKCoreKit
+import GoogleSignIn
+import Google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError!)")
 
         return true
     }
@@ -26,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let srcApp = options[.sourceApplication] as? String
         let annotation = options[.annotation]
         if FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: srcApp, annotation: annotation) {
+            return true
+        }
+
+        if GIDSignIn.sharedInstance().handle(url, sourceApplication: srcApp, annotation: annotation) {
             return true
         }
 

@@ -12,7 +12,10 @@ import SnapKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 
+import GoogleSignIn
+
 class SignInViewController: UIViewController {
+
     let bundle: Bundle? = {
         return nil
         let navigationBundle = Bundle(for: SignInViewController.self)
@@ -38,7 +41,8 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
 
     override func willMove(toParentViewController parent: UIViewController?) {
@@ -151,6 +155,7 @@ class SignInViewController: UIViewController {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "google-icon", in: bundle, compatibleWith: nil), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(loginWithGoogle), for: .touchUpInside)
 
         let title = NSLocalizedString("LoginWithGoogle", comment: "Se connecter avec Google")
         let attributedString = NSMutableAttributedString(
@@ -290,7 +295,7 @@ class SignInViewController: UIViewController {
     }
 }
 
-extension SignInViewController {
+extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
     func loginWithFacebook() {
         let login = FBSDKLoginManager()
         login.logIn(withReadPermissions: ["public_profile"], from: self) { result, error in
@@ -298,5 +303,20 @@ extension SignInViewController {
             self.signedIn?(User(source: .facebook, token: FBSDKAccessToken.current().tokenString))
             self.dismiss(animated: true)
         }
+    }
+
+    func loginWithGoogle() {
+        GIDSignIn.sharedInstance().signIn()
+    }
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        guard error == nil else { return }
+        signedIn?(User(source: .google, token: user.authentication.idToken))
+        self.dismiss(animated: true)
+    }
+
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user:GIDGoogleUser!,
+                withError error: Error!) {
+        // uh... nothing?
     }
 }

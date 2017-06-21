@@ -50,9 +50,11 @@
             </array>
         </dict>
         <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>mindful</string>
+                <string>com.googleusercontent.apps.1070759033390-mrtukrtbmm788nrgtusdavm13k108a8s</string>
             </array>
         </dict>
     </array>

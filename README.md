@@ -37,14 +37,24 @@ $ pod install
 
 ## Usage
 
-### Facebook configuration
+### Configuration
 
 #### Create your Facebook application
 
 Create or select your Facebook application on [facebook for developpers](https://developers.facebook.com/docs/facebook-login/ios).
 Note the Facebook App ID for your application.
+
+#### Generate a Google configuration file
+
+The configuration file provides service-specific information for your application. You have to generate it from the [Google Developer Console](https://developers.google.com/mobile/add?platform=ios&cntapi=signin&cnturl=https:%2F%2Fdevelopers.google.com%2Fidentity%2Fsign-in%2Fios%2Fsign-in%3Fconfigured%3Dtrue&cntlbl=Continue%20Adding%20Sign-In).
+
+### Add the configuration file to your project
+
+Drag the `GoogleService-Info.plist file you just downloaded into the root of your Xcode project and add it to all targets.
  
 #### Configure your Info.plist
+
+In the `GoogleService-Info.plist` file, locate the `REVERSED_CLIENT_ID` key and note its value.
 
 1. Locate the `Info.plist` file in your xcode project.
 2. Right click on the file and select "Open As Source Code"
@@ -53,10 +63,20 @@ Note the Facebook App ID for your application.
 <key>CFBundleURLTypes</key>
 <array>
   <dict>
-  <key>CFBundleURLSchemes</key>
-  <array>
-    <string>fbxxxxxxxxxxxxxxx</string>
-  </array>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>fbxxxxxxxxxxxxxxx</string>
+    </array>
+  </dict>
+  <dict>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>THE VALUE YOU NOTED EARLIER</string>
+    </array>
   </dict>
 </array>
 <key>FacebookAppID</key>
@@ -74,15 +94,21 @@ Note the Facebook App ID for your application.
 
 #### Connect your AppDelegate
 
-In order to redirect to your application after login, Facebook needs to connect your AppDelegate.
+In order to redirect to your application after login, Facebook and Goog need to connect your AppDelegate.
 Add the following code to your AppDelegate.swift file.
 
 ```swift
 //  AppDelegate.swift
 import FBSDKCoreKit
+import GoogleSignIn
+import Google
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
+  var configureError: NSError?
+  GGLContext.sharedInstance().configureWithError(&configureError)
+  assert(configureError == nil, "Error configuring Google services: \(configureError!)")
 
   return true
 }
@@ -94,9 +120,11 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
     return true
   }
 
+  if GIDSignIn.sharedInstance().handle(url, sourceApplication: srcApp, annotation: annotation) {
+      return true
+  }
+
   return true
 }
 
 ```
-
-
