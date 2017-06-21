@@ -255,6 +255,30 @@ class SignInViewController: UIViewController {
         view.layer.shadowOffset = .zero
         view.backgroundColor = .white
 
+        let attributedString = NSMutableAttributedString(
+            string: NSLocalizedString("LoginNoAccount", comment: "Pas encore de compte"),
+            attributes: [
+                NSForegroundColorAttributeName: UIColor.black,
+                NSFontAttributeName: config.font.withSize(15)
+            ])
+        attributedString.append(NSAttributedString(string: " "))
+        attributedString.append(NSAttributedString(
+            string: NSLocalizedString("LoginRegister", comment: "Inscription"),
+            attributes: [
+                NSForegroundColorAttributeName: config.ctaBackgroundColor,
+                NSFontAttributeName: config.font.withSize(15).bold(),
+                NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue
+            ]))
+        let button = UIButton(type: .custom)
+        button.setAttributedTitle(attributedString, for: .normal)
+        button.setImage(UIImage(named: "info-icon", in: bundle, compatibleWith: nil), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+
+        view.addSubview(button)
+        button.snp.makeConstraints { $0.edges.equalToSuperview() }
+
+        button.imageEdgeInsets = UIEdgeInsets(top: 22, left: 0, bottom: 23, right: 10)
+
         return view
     }
 }

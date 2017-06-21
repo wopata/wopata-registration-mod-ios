@@ -16,5 +16,7 @@
 "Password" = "Mot de passe";
 "LoginButtonTitle" = "Se connecter";
 "LoginResetTitle" = "Mot de passe oublié ?";
+"LoginNoAccount" = "Pas encore de compte ?";
+"LoginRegister" = "Inscription";
 
 "OR" = "Ou";
