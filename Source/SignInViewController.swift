@@ -151,7 +151,7 @@ class SignInViewController: SHKeyboardViewController {
         pwd.snp.makeConstraints {
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(email.snp.bottom).offset(15)
+            $0.top.equalTo(email.snp.bottom).offset(12)
         }
         pwd.valueChanged = { self.pwdValue = $0 }
         email.returnKeyPressed = { _ = pwd.becomeFirstResponder() }
@@ -162,7 +162,7 @@ class SignInViewController: SHKeyboardViewController {
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(45)
-            $0.top.equalTo(pwd.snp.bottom).offset(45)
+            $0.top.equalTo(pwd.snp.bottom).offset(40)
         }
 
         let reset = buildResetButton()
@@ -344,7 +344,6 @@ extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
         login.logIn(withReadPermissions: ["public_profile"], from: self) { result, error in
             guard let result = result, error == nil, !result.isCancelled else { return }
             self.signedIn?(User(source: .facebook, token: FBSDKAccessToken.current().tokenString))
-            self.dismiss(animated: true)
         }
     }
 
@@ -354,13 +353,11 @@ extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
 
     func loginWithEmail() {
         self.signedIn?(User(source: .native, email: emailValue, password: pwdValue))
-        dismiss(animated: true)
     }
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         guard error == nil else { return }
         signedIn?(User(source: .google, token: user.authentication.idToken))
-        self.dismiss(animated: true)
     }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user:GIDGoogleUser!,

@@ -45,6 +45,7 @@ class ViewController: UIViewController {
                 self.signedIn.text = "Native user\nemail: \(user.email!)\npassword: \(user.password!)"
             }
             self.signedIn.isHidden = false
+            self.dismiss(animated: true)
         }
     }
 }

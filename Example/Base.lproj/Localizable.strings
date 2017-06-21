@@ -19,4 +19,8 @@
 "LoginNoAccount" = "Pas encore de compte ?";
 "LoginRegister" = "Inscription";
 
+"ErrorEmailEmpty" = "L'email ne doit pas être vide";
+"ErrorEmailInvalid" = "L'email est invalide";
+"ErrorPasswordEmpty" = "Le mot de passe ne doit pas être vide";
+
 "OR" = "Ou";
