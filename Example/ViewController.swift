@@ -38,8 +38,20 @@ class ViewController: UIViewController {
         brand.snp.makeConstraints { $0.width.equalTo(182) }
         config.landingBrandView = brand
 
-        let navigation = UINavigationController(rootViewController: LoginViewController(config: config))
+        let controller = LoginViewController(config: config)
+        let navigation = UINavigationController(rootViewController: controller)
         present(navigation, animated: true)
+
+        controller.signedIn = { user in
+            switch user.source {
+            case .facebook:
+                print("Facebook user token: \(user.token!)")
+            case .google:
+                print("Google user token: \(user.token!)")
+            case .native:
+                print("Native user email: \(user.email!), password: \(user.password!)")
+            }
+        }
     }
 }
 

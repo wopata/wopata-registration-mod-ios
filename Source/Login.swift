@@ -28,6 +28,24 @@ public class LoginConfiguration {
     }()
 }
 
+public class User {
+    enum UserSource {
+        case facebook, google, native
+    }
+
+    var token: String?
+    var email: String?
+    var password: String?
+    var source: UserSource
+
+    init(source: UserSource, token: String? = nil, email: String? = nil, password: String? = nil) {
+        self.source = source
+        self.token = token
+        self.email = email
+        self.password = password
+    }
+}
+
 extension UIFont {
     func withTraits(traits:UIFontDescriptorSymbolicTraits...) -> UIFont {
         let descriptor = self.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits(traits))!

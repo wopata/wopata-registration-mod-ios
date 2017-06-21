@@ -9,6 +9,9 @@
 import UIKit
 import SnapKit
 
+import FBSDKLoginKit
+import FBSDKCoreKit
+
 class SignInViewController: UIViewController {
     let bundle: Bundle? = {
         return nil
@@ -18,6 +21,9 @@ class SignInViewController: UIViewController {
     }()
 
     let config: LoginConfiguration
+
+    var signedIn: ((User) -> Void)?
+    var signedUp: ((User) -> Void)?
 
     init(config: LoginConfiguration) {
         self.config = config
@@ -172,6 +178,7 @@ class SignInViewController: UIViewController {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "facebook-icon", in: bundle, compatibleWith: nil), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(loginWithFacebook), for: .touchUpInside)
 
         let title = NSLocalizedString("LoginWithFacebook", comment: "Se connecter avec Facebook")
         let attributedString = NSMutableAttributedString(
@@ -280,5 +287,16 @@ class SignInViewController: UIViewController {
         button.imageEdgeInsets = UIEdgeInsets(top: 22, left: 0, bottom: 23, right: 10)
 
         return view
+    }
+}
+
+extension SignInViewController {
+    func loginWithFacebook() {
+        let login = FBSDKLoginManager()
+        login.logIn(withReadPermissions: ["public_profile"], from: self) { result, error in
+            guard let result = result, error == nil, !result.isCancelled else { return }
+            self.signedIn?(User(source: .facebook, token: FBSDKAccessToken.current().tokenString))
+            self.dismiss(animated: true)
+        }
     }
 }

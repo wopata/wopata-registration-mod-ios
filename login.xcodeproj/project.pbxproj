@@ -24,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		14410414726D43F21588DC5D /* Pods-login.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login.release.xcconfig"; path = "Pods/Target Support Files/Pods-login/Pods-login.release.xcconfig"; sourceTree = "<group>"; };
+		A12475848CFB588ED2138EFF /* Pods-login.inhouse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login.inhouse.xcconfig"; path = "Pods/Target Support Files/Pods-login/Pods-login.inhouse.xcconfig"; sourceTree = "<group>"; };
 		A9D4E77E009121CE02623E93 /* Pods_login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0029758662AD26757A9971E /* Pods-login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login.debug.xcconfig"; path = "Pods/Target Support Files/Pods-login/Pods-login.debug.xcconfig"; sourceTree = "<group>"; };
 		F03B75031EF7C9130027CE7D /* login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = login.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +59,7 @@
 			children = (
 				F0029758662AD26757A9971E /* Pods-login.debug.xcconfig */,
 				14410414726D43F21588DC5D /* Pods-login.release.xcconfig */,
+				A12475848CFB588ED2138EFF /* Pods-login.inhouse.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -382,6 +384,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				FACEBOOK_APP_ID = 660286717335832;
+				FACEBOOK_DISPLAY_NAME = Boddy;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.mod.register;
@@ -398,6 +402,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				FACEBOOK_APP_ID = 660286717335832;
+				FACEBOOK_DISPLAY_NAME = Boddy;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.mod.register;
@@ -453,11 +459,13 @@
 		};
 		F0E2DE571EF94826007DD38A /* InHouse */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14410414726D43F21588DC5D /* Pods-login.release.xcconfig */;
+			baseConfigurationReference = A12475848CFB588ED2138EFF /* Pods-login.inhouse.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				FACEBOOK_APP_ID = 660286717335832;
+				FACEBOOK_DISPLAY_NAME = Boddy;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.mod.register;

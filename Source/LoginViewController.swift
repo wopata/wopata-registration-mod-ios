@@ -11,9 +11,10 @@ import SnapKit
 
 // Landing View Controller
 public class LoginViewController: UIViewController {
-    public var navigationBarTintColor: UIColor? { return .clear }
-
     let config: LoginConfiguration
+
+    public var signedIn: ((User) -> Void)?
+    public var signedUp: ((User) -> Void)?
 
     init(config: LoginConfiguration) {
         self.config = config
@@ -94,7 +95,10 @@ public class LoginViewController: UIViewController {
     }
 
     func start() {
-        navigationController?.pushViewController(SignInViewController(config: config), animated: true)
+        let controller = SignInViewController(config: config)
+        controller.signedIn = signedIn
+        controller.signedUp = signedUp
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     func stop() {

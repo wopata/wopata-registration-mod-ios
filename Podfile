@@ -4,4 +4,8 @@ target 'login' do
   use_frameworks!
 
   pod 'SnapKit'
+
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
 end
