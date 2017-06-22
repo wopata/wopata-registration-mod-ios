@@ -61,7 +61,7 @@ public class WopataLogin {
     }()
 
     public func addError(field: WopataLoginField, message: String) {
-        guard let top = mainController.navigationController?.visibleViewController as? ErrorHandler else { return }
+        guard let top = (mainController as? UINavigationController)?.visibleViewController as? ErrorHandler else { return }
         top.addError(field: field, message: message)
     }
 
