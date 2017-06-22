@@ -412,6 +412,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 0.0.1;
 				DEVELOPMENT_TEAM = VLMBA8Q5QL;
 				FACEBOOK_APP_ID = 660286717335832;
 				FACEBOOK_DISPLAY_NAME = Boddy;
@@ -422,6 +423,7 @@
 				PROVISIONING_PROFILE = "46e0e0a8-7d62-4400-90d1-03e563499352";
 				PROVISIONING_PROFILE_SPECIFIER = "WopataLogin DEV";
 				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -431,6 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 0.0.1;
 				DEVELOPMENT_TEAM = VLMBA8Q5QL;
 				FACEBOOK_APP_ID = 660286717335832;
 				FACEBOOK_DISPLAY_NAME = Boddy;
@@ -441,6 +444,7 @@
 				PROVISIONING_PROFILE = "26a64096-9dba-4ee6-97ae-e84a0cdb4804";
 				PROVISIONING_PROFILE_SPECIFIER = "WopataLogin InHouse";
 				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -494,6 +498,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 0.0.1;
 				DEVELOPMENT_TEAM = VLMBA8Q5QL;
 				FACEBOOK_APP_ID = 660286717335832;
 				FACEBOOK_DISPLAY_NAME = Boddy;
@@ -504,6 +509,7 @@
 				PROVISIONING_PROFILE = "26a64096-9dba-4ee6-97ae-e84a0cdb4804";
 				PROVISIONING_PROFILE_SPECIFIER = "WopataLogin InHouse";
 				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = InHouse;
 		};
