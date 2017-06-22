@@ -46,49 +46,24 @@ public class User {
     }
 }
 
-extension UIFont {
-    func withTraits(traits:UIFontDescriptorSymbolicTraits...) -> UIFont {
-        let descriptor = self.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits(traits))!
-        return UIFont(descriptor: descriptor, size: 0)
+public enum LoginField { case email, password, facebook, google }
+public class Login {
+    public var config = LoginConfiguration.default
+    public var signedIn: ((User) -> Void)?
+    public var signedUp: ((User) -> Void)?
+
+    public static var shared: Login = {
+        return Login()
+    }()
+
+    public func addError(field: LoginField, message: String) {
+        guard let top = mainController.navigationController?.visibleViewController as? ErrorHandler else { return }
+        top.addError(field: field, message: message)
     }
 
-    func boldItalic() -> UIFont {
-        return withTraits(traits: .traitBold, .traitItalic)
-    }
-
-    func bold() -> UIFont {
-        return withTraits(traits: .traitBold)
-    }
-
-    func italic() -> UIFont {
-        return withTraits(traits: .traitItalic)
-    }
+    public lazy var mainController: UIViewController = LoginViewController()
 }
 
-extension String {
-    func nsRange(from range: Range<Index>) -> NSRange {
-        let lower = UTF16View.Index(range.lowerBound, within: utf16)
-        let upper = UTF16View.Index(range.upperBound, within: utf16)
-        return NSRange(location: utf16.startIndex.distance(to: lower), length: lower.distance(to: upper))
-    }
+protocol ErrorHandler {
+    func addError(field: LoginField, message: String)
 }
-
-extension UIView {
-    func updateAnchorPoint(_ point: CGPoint) {
-        var newPoint = CGPoint(x: bounds.size.width * point.x, y: bounds.size.height * point.y)
-        var oldPoint = CGPoint(x: bounds.size.width * layer.anchorPoint.x, y: bounds.size.height * layer.anchorPoint.y)
-
-        newPoint = newPoint.applying(transform)
-        oldPoint = oldPoint.applying(transform)
-
-        var position = layer.position
-        position.x -= oldPoint.x
-        position.x += newPoint.x
-        position.y -= oldPoint.y
-        position.y += newPoint.y
-
-        layer.position = position
-        layer.anchorPoint = point
-    }
-}
-

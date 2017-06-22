@@ -1,5 +1,12 @@
 WopataLogin is a social/native sign-signup module for iOS
 
+## Contents
+
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+
 ## Requirements
 
 - iOS 8.0+ / Mac OS X 10.11+ / tvOS 9.0+
@@ -35,16 +42,14 @@ $ pod install
 
 ---
 
-## Usage
+## Configuration
 
-### Configuration
-
-#### Create your Facebook application
+### Create your Facebook application
 
 Create or select your Facebook application on [facebook for developpers](https://developers.facebook.com/docs/facebook-login/ios).
 Note the Facebook App ID for your application.
 
-#### Generate a Google configuration file
+### Generate a Google configuration file
 
 The configuration file provides service-specific information for your application. You have to generate it from the [Google Developer Console](https://developers.google.com/mobile/add?platform=ios&cntapi=signin&cnturl=https:%2F%2Fdevelopers.google.com%2Fidentity%2Fsign-in%2Fios%2Fsign-in%3Fconfigured%3Dtrue&cntlbl=Continue%20Adding%20Sign-In).
 
@@ -52,7 +57,7 @@ The configuration file provides service-specific information for your applicatio
 
 Drag the `GoogleService-Info.plist file you just downloaded into the root of your Xcode project and add it to all targets.
  
-#### Configure your Info.plist
+### Configure your Info.plist
 
 In the `GoogleService-Info.plist` file, locate the `REVERSED_CLIENT_ID` key and note its value.
 
@@ -92,7 +97,7 @@ In the `GoogleService-Info.plist` file, locate the `REVERSED_CLIENT_ID` key and 
 </array>
 ```
 
-#### Connect your AppDelegate
+### Connect your AppDelegate
 
 In order to redirect to your application after login, Facebook and Goog need to connect your AppDelegate.
 Add the following code to your AppDelegate.swift file.
@@ -128,3 +133,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 }
 
 ```
+
+---
+
+## Usage

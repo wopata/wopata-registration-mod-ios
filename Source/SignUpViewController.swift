@@ -15,51 +15,28 @@ import FBSDKCoreKit
 import GoogleSignIn
 
 class SignUpViewController: SHKeyboardViewController {
-
-    let bundle: Bundle? = {
-        return nil
-        let navigationBundle = Bundle(for: SignInViewController.self)
-        let bundleURL = navigationBundle.url(forResource: "Images", withExtension: "bundle")!
-        return Bundle(url: bundleURL)!
-    }()
-
-    let config: LoginConfiguration
-
-    var signedIn: ((User) -> Void)?
-    var signedUp: ((User) -> Void)?
+    let config = Login.shared.config
+    let signedIn = Login.shared.signedIn
+    let signedUp = Login.shared.signedUp
 
     var emailValue: String? { didSet { updateButton() } }
     var pwdValue: String? { didSet { updateButton() } }
     var button: UIButton!
 
     var scrollView: UIScrollView!
-    
-
-    init(config: LoginConfiguration) {
-        self.config = config
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required public init?(coder aDecoder: NSCoder) {
-        self.config = LoginConfiguration.default
-        super.init(coder: aDecoder)
-    }
+    var emailField: InputField!
+    var pwdField: InputField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
-
         registerKeyboardNotifications(for: scrollView)
-
         updateButton()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = NSLocalizedString("SignUpTitle", comment: "S'inscrire")
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     override func loadView() {
@@ -82,25 +59,25 @@ class SignUpViewController: SHKeyboardViewController {
             $0.width.height.equalTo(view)
         }
 
-        let email = EmailField(font: config.font)
-        email.tintColor = config.ctaBackgroundColor
-        container.addSubview(email)
-        email.snp.makeConstraints {
+        emailField = EmailField(font: config.font)
+        emailField.tintColor = config.ctaBackgroundColor
+        container.addSubview(emailField)
+        emailField.snp.makeConstraints {
             $0.left.top.equalTo(35)
             $0.centerX.equalToSuperview()
         }
-        email.valueChanged = { self.emailValue = $0 }
+        emailField.valueChanged = { self.emailValue = $0 }
 
-        let pwd = PasswordField(font: config.font)
-        pwd.tintColor = config.ctaBackgroundColor
-        container.addSubview(pwd)
-        pwd.snp.makeConstraints {
+        pwdField = PasswordField(font: config.font)
+        pwdField.tintColor = config.ctaBackgroundColor
+        container.addSubview(pwdField)
+        pwdField.snp.makeConstraints {
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(email.snp.bottom).offset(12)
+            $0.top.equalTo(emailField.snp.bottom).offset(12)
         }
-        pwd.valueChanged = { self.pwdValue = $0 }
-        email.returnKeyPressed = { _ = pwd.becomeFirstResponder() }
+        pwdField.valueChanged = { self.pwdValue = $0 }
+        emailField.returnKeyPressed = { _ = self.pwdField.becomeFirstResponder() }
 
         button = ButtonBuilder.shared.mainButton(title: NSLocalizedString("SignupButtonTitle", comment: "S'inscrire"))
         button.addTarget(self, action: #selector(signupWithEmail), for: .touchUpInside)
@@ -109,7 +86,7 @@ class SignUpViewController: SHKeyboardViewController {
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(45)
-            $0.top.equalTo(pwd.snp.bottom).offset(40)
+            $0.top.equalTo(pwdField.snp.bottom).offset(40)
         }
 
         let or = ButtonBuilder.shared.orSeparator()
@@ -156,6 +133,23 @@ class SignUpViewController: SHKeyboardViewController {
     }
 }
 
+extension SignUpViewController: ErrorHandler {
+    func addError(field: LoginField, message: String) {
+        switch field {
+        case .email:
+            emailValue = nil
+            emailField.addError(error: message)
+        case .password:
+            pwdValue = nil
+            pwdField.addError(error: message)
+        default:
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+        }
+    }
+}
+
 extension SignUpViewController: GIDSignInDelegate, GIDSignInUIDelegate {
     func signupWithFacebook() {
         let login = FBSDKLoginManager()
@@ -166,6 +160,8 @@ extension SignUpViewController: GIDSignInDelegate, GIDSignInUIDelegate {
     }
 
     func signupWithGoogle() {
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signIn()
     }
 

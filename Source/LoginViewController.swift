@@ -10,23 +10,10 @@ import UIKit
 import SnapKit
 
 // Landing View Controller
-public class LoginViewController: UIViewController {
-    let config: LoginConfiguration
+class LoginViewController: UIViewController {
+    let config = Login.shared.config
 
-    public var signedIn: ((User) -> Void)?
-    public var signedUp: ((User) -> Void)?
-
-    init(config: LoginConfiguration) {
-        self.config = config
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        self.config = LoginConfiguration.default
-        super.init(coder: aDecoder)
-    }
-
-    public override func loadView() {
+    override func loadView() {
         super.loadView()
         setupNavigation()
 
@@ -84,6 +71,11 @@ public class LoginViewController: UIViewController {
         title = ""
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        setupNavigation()
+        super.viewWillAppear(animated)
+    }
+
     private func setupNavigation() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -95,10 +87,7 @@ public class LoginViewController: UIViewController {
     }
 
     func start() {
-        let controller = SignInViewController(config: config)
-        controller.signedIn = signedIn
-        controller.signedUp = signedUp
-        navigationController?.pushViewController(controller, animated: true)
+        navigationController?.pushViewController(SignInViewController(), animated: true)
     }
 
     func stop() {

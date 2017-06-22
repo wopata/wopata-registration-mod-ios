@@ -59,6 +59,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - GTMSessionFetcher/Full (1.1.9):
     - GTMSessionFetcher/Core (= 1.1.9)
+  - KVNProgress (2.3.1)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
@@ -66,6 +67,7 @@ DEPENDENCIES:
   - FacebookLogin
   - FacebookShare
   - Google/SignIn
+  - KVNProgress
   - SnapKit
 
 SPEC CHECKSUMS:
@@ -84,8 +86,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 56809fda4e47a1a6391a19124df1bbac1e295683
+PODFILE CHECKSUM: 3e97564e3db263e5bffe20f10798d95b1564cc27
 
 COCOAPODS: 1.2.1
