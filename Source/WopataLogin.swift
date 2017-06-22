@@ -8,6 +8,10 @@
 
 import UIKit
 
+import FBSDKCoreKit
+import GoogleSignIn
+import Google
+
 public class WopataLoginConfiguration {
     var landingBackgroundImage: UIImage? = nil
     var landingBrandView: UIView? = nil
@@ -65,6 +69,26 @@ public class WopataLogin {
         let navigation = UINavigationController(rootViewController: LoginViewController())
         return navigation
     }()
+
+    public func configure(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError!)")
+    }
+
+    public func handle(url: URL, application: UIApplication, sourceApplication: String?, annotation: Any?) -> Bool {
+        if FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation) {
+            return true
+        }
+
+        if GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation) {
+            return true
+        }
+
+        return true
+    }
 }
 
 protocol ErrorHandler {

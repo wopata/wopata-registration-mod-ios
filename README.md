@@ -55,7 +55,7 @@ The configuration file provides service-specific information for your applicatio
 
 ### Add the configuration file to your project
 
-Drag the `GoogleService-Info.plist file you just downloaded into the root of your Xcode project and add it to all targets.
+Drag the `GoogleService-Info.plist` file you just downloaded into the root of your Xcode project and add it to all targets.
  
 ### Configure your Info.plist
 
@@ -104,32 +104,18 @@ Add the following code to your AppDelegate.swift file.
 
 ```swift
 //  AppDelegate.swift
-import FBSDKCoreKit
-import GoogleSignIn
-import Google
+import WopataLogin
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-  FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-
-  var configureError: NSError?
-  GGLContext.sharedInstance().configureWithError(&configureError)
-  assert(configureError == nil, "Error configuring Google services: \(configureError!)")
-
+  
+  WopataLogin.shared.configure(application: application, launchOptions: launchOptions)
   return true
 }
 
 func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
   let srcApp = options[.sourceApplication] as? String
   let annotation = options[.annotation]
-  if FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: srcApp, annotation: annotation) {
-    return true
-  }
-
-  if GIDSignIn.sharedInstance().handle(url, sourceApplication: srcApp, annotation: annotation) {
-      return true
-  }
-
-  return true
+  return WopataLogin.shared.handle(url: url, application: app, sourceApplication: srcApp, annotation: annotation)
 }
 
 ```
