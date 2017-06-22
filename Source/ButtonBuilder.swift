@@ -10,7 +10,7 @@ import UIKit
 
 class ButtonBuilder {
 
-    var config: LoginConfiguration!
+    var config: WopataLoginConfiguration!
 
     static let shared: ButtonBuilder = {
         return ButtonBuilder()

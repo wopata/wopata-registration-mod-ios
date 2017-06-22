@@ -19,7 +19,7 @@
 		F0E2DE431EF90CD0007DD38A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */; };
 		F0E2DE461EF90CD0007DD38A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE401EF90CD0007DD38A /* Info.plist */; };
 		F0E2DE471EF90CD0007DD38A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE411EF90CD0007DD38A /* ViewController.swift */; };
-		F0E2DE4B1EF90CE3007DD38A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE491EF90CE3007DD38A /* Login.swift */; };
+		F0E2DE4B1EF90CE3007DD38A /* WopataLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE491EF90CE3007DD38A /* WopataLogin.swift */; };
 		F0E2DE4C1EF90CE3007DD38A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE4A1EF90CE3007DD38A /* LoginViewController.swift */; };
 		F0E2DE511EF90D2B007DD38A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE4D1EF90D2B007DD38A /* LaunchScreen.storyboard */; };
 		F0E2DE521EF90D2B007DD38A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE4F1EF90D2B007DD38A /* Main.storyboard */; };
@@ -44,7 +44,7 @@
 		F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Example/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F0E2DE401EF90CD0007DD38A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Example/Info.plist; sourceTree = SOURCE_ROOT; };
 		F0E2DE411EF90CD0007DD38A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Example/ViewController.swift; sourceTree = SOURCE_ROOT; };
-		F0E2DE491EF90CE3007DD38A /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		F0E2DE491EF90CE3007DD38A /* WopataLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WopataLogin.swift; sourceTree = "<group>"; };
 		F0E2DE4A1EF90CE3007DD38A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F0E2DE4E1EF90D2B007DD38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Example/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		F0E2DE501EF90D2B007DD38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Example/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
@@ -129,7 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				F0B21ED31EFBA6B00039DB3E /* Helpers */,
-				F0E2DE491EF90CE3007DD38A /* Login.swift */,
+				F0E2DE491EF90CE3007DD38A /* WopataLogin.swift */,
 				F0E2DE4A1EF90CE3007DD38A /* LoginViewController.swift */,
 				F0E2DE581EF94FF6007DD38A /* SignInViewController.swift */,
 				F0B21ECF1EFAB7860039DB3E /* SignUpViewController.swift */,
@@ -268,7 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0E2DE4C1EF90CE3007DD38A /* LoginViewController.swift in Sources */,
-				F0E2DE4B1EF90CE3007DD38A /* Login.swift in Sources */,
+				F0E2DE4B1EF90CE3007DD38A /* WopataLogin.swift in Sources */,
 				F0B21ED01EFAB7860039DB3E /* SignUpViewController.swift in Sources */,
 				F0E2DE471EF90CD0007DD38A /* ViewController.swift in Sources */,
 				F0B21ED21EFABAE20039DB3E /* ButtonBuilder.swift in Sources */,

@@ -11,7 +11,7 @@ import SnapKit
 
 // Landing View Controller
 class LoginViewController: UIViewController {
-    let config = Login.shared.config
+    let config = WopataLogin.shared.config
 
     override func loadView() {
         super.loadView()

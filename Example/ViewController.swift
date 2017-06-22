@@ -24,16 +24,16 @@ class ViewController: UIViewController {
     @IBAction func login() {
         signedIn.text = nil
 
-        let config = Login.shared.config
+        let config = WopataLogin.shared.config
         config.landingBackgroundImage = #imageLiteral(resourceName: "background")
 
         let brand = UIImageView(image: #imageLiteral(resourceName: "brand"))
         brand.contentMode = .scaleAspectFit
         brand.snp.makeConstraints { $0.width.equalTo(182) }
         config.landingBrandView = brand
-        Login.shared.config = config
+        WopataLogin.shared.config = config
 
-        Login.shared.signedIn = { user in
+        WopataLogin.shared.signedIn = { user in
             switch user.source {
             case .facebook:
                 self.signedIn.text = "Facebook user token:\n\(user.token!)"
@@ -45,24 +45,23 @@ class ViewController: UIViewController {
             self.signedIn.isHidden = false
             self.dismiss(animated: true)
         }
-        Login.shared.signedUp = { user in
+        WopataLogin.shared.signedUp = { user in
             KVNProgress.show(withStatus: "Faking sending user data to server")
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 KVNProgress.dismiss()
                 switch user.source {
                 case .facebook:
-                    Login.shared.addError(field: .facebook, message: "Une erreur est intervenue, veuillez réessayer ultérieurement")
+                    WopataLogin.shared.addError(field: .facebook, message: "Une erreur est intervenue, veuillez réessayer ultérieurement")
                 case .google:
-                    Login.shared.addError(field: .google, message: "Une erreur est intervenue, veuillez réessayer ultérieurement")
+                    WopataLogin.shared.addError(field: .google, message: "Une erreur est intervenue, veuillez réessayer ultérieurement")
                 case .native:
-                    Login.shared.addError(field: .email, message: "Cet email est déjà pris")
-                    Login.shared.addError(field: .password, message: "Le mot de passe est trop court")
+                    WopataLogin.shared.addError(field: .email, message: "Cet email est déjà pris")
+                    WopataLogin.shared.addError(field: .password, message: "Le mot de passe est trop court")
                 }
             }
         }
 
-        let navigation = UINavigationController(rootViewController: Login.shared.mainController)
-        present(navigation, animated: true)
+        present(WopataLogin.shared.mainController, animated: true)
     }
 }
 

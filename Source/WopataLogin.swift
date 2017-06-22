@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class LoginConfiguration {
+public class WopataLoginConfiguration {
     var landingBackgroundImage: UIImage? = nil
     var landingBrandView: UIView? = nil
 
@@ -21,8 +21,8 @@ public class LoginConfiguration {
 
     var font: UIFont = .systemFont(ofSize: 14)
 
-    static let `default`: LoginConfiguration = {
-        let config = LoginConfiguration()
+    static let `default`: WopataLoginConfiguration = {
+        let config = WopataLoginConfiguration()
         // set default
         return config
     }()
@@ -46,24 +46,27 @@ public class User {
     }
 }
 
-public enum LoginField { case email, password, facebook, google }
-public class Login {
-    public var config = LoginConfiguration.default
+public enum WopataLoginField { case email, password, facebook, google }
+public class WopataLogin {
+    public var config = WopataLoginConfiguration.default
     public var signedIn: ((User) -> Void)?
     public var signedUp: ((User) -> Void)?
 
-    public static var shared: Login = {
-        return Login()
+    public static var shared: WopataLogin = {
+        return WopataLogin()
     }()
 
-    public func addError(field: LoginField, message: String) {
+    public func addError(field: WopataLoginField, message: String) {
         guard let top = mainController.navigationController?.visibleViewController as? ErrorHandler else { return }
         top.addError(field: field, message: message)
     }
 
-    public lazy var mainController: UIViewController = LoginViewController()
+    public lazy var mainController: UIViewController = {
+        let navigation = UINavigationController(rootViewController: LoginViewController())
+        return navigation
+    }()
 }
 
 protocol ErrorHandler {
-    func addError(field: LoginField, message: String)
+    func addError(field: WopataLoginField, message: String)
 }

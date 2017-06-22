@@ -15,9 +15,9 @@ import FBSDKCoreKit
 import GoogleSignIn
 
 class SignInViewController: SHKeyboardViewController {
-    let config = Login.shared.config
-    let signedIn = Login.shared.signedIn
-    let signedUp = Login.shared.signedUp
+    let config = WopataLogin.shared.config
+    let signedIn = WopataLogin.shared.signedIn
+    let signedUp = WopataLogin.shared.signedUp
 
     var emailValue: String? { didSet { updateButton() } }
     var pwdValue: String? { didSet { updateButton() } }
@@ -172,7 +172,7 @@ class SignInViewController: SHKeyboardViewController {
 }
 
 extension SignInViewController: ErrorHandler {
-    func addError(field: LoginField, message: String) {
+    func addError(field: WopataLoginField, message: String) {
         switch field {
         case .email:
             emailValue = nil

@@ -137,3 +137,55 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 ---
 
 ## Usage
+
+Check out the provided demo app for an example on how you can use the component.
+
+### Quick Start
+
+```swift
+import WopataLogin
+
+class MyViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        WopataLogin.shared.signedIn = { user in
+          // send user data to server
+        }
+        WopataLogin.shared.signedUp = { user in
+          // send user data to server
+        }
+        present(WopataLogin.shared.mainController, animated: true)
+    }
+
+}
+```
+
+### Customization
+
+You can customize most of the colors, fonts and backgrounds, using the `WopataLoginConfiguration` class
+
+```swift
+let config = WopataLogin.shared.config
+config.landingBackgroundImage = UIImage(named: "background")
+
+let brand = UIImageView(image: UIImage(named: "brand"))
+brand.contentMode = .scaleAspectFit
+brand.snp.makeConstraints { $0.width.equalTo(182) }
+config.landingBrandView = brand
+
+config.ctaBackgroundColor = UIColor.red
+config.ctaFont = UIFont.boldSystemFont(ofSize: 15)
+
+WopataLogin.shared.config = config
+```
+
+### Server errors
+
+If your server is configured to return errors on sign-in/sign-up, you can forward them to the component.
+
+```swift
+WopataLogin.shared.addError(field: .facebook, message: "There was an error with your account, please contact the support.")
+WopataLogin.shared.addError(field: .password, message: "The password is too short")
+```
