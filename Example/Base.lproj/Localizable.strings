@@ -26,6 +26,9 @@
 "SignupWithAccount" = "Déjà un compte ?";
 "SignupConnect" = "Connexion";
 
+"ResetTitle" = "Réinitialisation";
+"ResetButtonTitle" = "Réinitialiser";
+
 "ErrorEmailEmpty" = "L'email ne doit pas être vide";
 "ErrorEmailInvalid" = "L'email est invalide";
 "ErrorPasswordEmpty" = "Le mot de passe ne doit pas être vide";

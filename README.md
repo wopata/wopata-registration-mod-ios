@@ -142,6 +142,9 @@ class MyViewController: UIViewController {
         WopataLogin.shared.signedUp = { user in
           // send user data to server
         }
+        WopataLogin.shared.reset = { user in
+          // send user data to server
+        }
         present(WopataLogin.shared.mainController, animated: true)
     }
 

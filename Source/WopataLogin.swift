@@ -54,6 +54,7 @@ public class WopataLogin {
     public var config = WopataLoginConfiguration.default
     public var signedIn: ((User) -> Void)?
     public var signedUp: ((User) -> Void)?
+    public var reset: ((User) -> Void)?
 
     public static var shared: WopataLogin = {
         return WopataLogin()

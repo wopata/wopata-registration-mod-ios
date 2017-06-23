@@ -61,6 +61,17 @@ class ViewController: UIViewController {
                 }
             }
         }
+        WopataLogin.shared.reset = { user in
+            KVNProgress.show(withStatus: "Faking sending user data to server")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                KVNProgress.dismiss()
+                self.dismiss(animated: true) {
+                    let alert = UIAlertController(title: nil, message: "Les instructions de réinitialisation du mot de passe vous ont été envoyées par email.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                }
+            }
+        }
 
         present(WopataLogin.shared.mainController, animated: true)
     }

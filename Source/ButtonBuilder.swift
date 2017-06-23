@@ -117,7 +117,7 @@ class ButtonBuilder {
         return button
     }
 
-    func resetButton() -> UIView {
+    func resetButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(NSLocalizedString("LoginResetTitle", comment: "Mot de passe oublié ?"), for: .normal)
         button.backgroundColor = .clear

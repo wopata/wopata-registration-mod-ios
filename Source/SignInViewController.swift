@@ -142,6 +142,7 @@ class SignInViewController: SHKeyboardViewController {
         }
 
         let reset = ButtonBuilder.shared.resetButton()
+        reset.addTarget(self, action: #selector(resetEmail), for: .touchUpInside)
         container.addSubview(reset)
         reset.snp.makeConstraints {
             $0.left.equalTo(35)
@@ -219,5 +220,9 @@ extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
 
     func signUp() {
         navigationController?.pushViewController(SignUpViewController(), animated: true)
+    }
+
+    func resetEmail() {
+        navigationController?.pushViewController(ResetViewController(), animated: true)
     }
 }
