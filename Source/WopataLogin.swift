@@ -10,22 +10,21 @@ import UIKit
 
 import FBSDKCoreKit
 import GoogleSignIn
-import Google
 
 public class WopataLoginConfiguration {
-    var landingBackgroundImage: UIImage? = nil
-    var landingBrandView: UIView? = nil
+    public var landingBackgroundImage: UIImage? = nil
+    public var landingBrandView: UIView? = nil
 
-    var landingTextFont: UIFont = .systemFont(ofSize: 18, weight: UIFontWeightMedium)
-    var landingTextColor: UIColor = .white
+    public var landingTextFont: UIFont = .systemFont(ofSize: 18, weight: UIFontWeightMedium)
+    public var landingTextColor: UIColor = .white
 
-    var ctaBackgroundColor: UIColor = UIColor(red: 73.0/255, green: 144.0/255, blue: 226.0/255, alpha: 1)
-    var ctaFont: UIFont = .systemFont(ofSize: 15, weight: UIFontWeightHeavy)
-    var ctaTextColor: UIColor = .white
+    public var ctaBackgroundColor: UIColor = UIColor(red: 73.0/255, green: 144.0/255, blue: 226.0/255, alpha: 1)
+    public var ctaFont: UIFont = .systemFont(ofSize: 15, weight: UIFontWeightHeavy)
+    public var ctaTextColor: UIColor = .white
 
-    var font: UIFont = .systemFont(ofSize: 14)
+    public var font: UIFont = .systemFont(ofSize: 14)
 
-    static let `default`: WopataLoginConfiguration = {
+    public static let `default`: WopataLoginConfiguration = {
         let config = WopataLoginConfiguration()
         // set default
         return config
@@ -33,14 +32,14 @@ public class WopataLoginConfiguration {
 }
 
 public class User {
-    enum UserSource {
+    public enum UserSource {
         case facebook, google, native
     }
 
-    var token: String?
-    var email: String?
-    var password: String?
-    var source: UserSource
+    public var token: String?
+    public var email: String?
+    public var password: String?
+    public var source: UserSource
 
     init(source: UserSource, token: String? = nil, email: String? = nil, password: String? = nil) {
         self.source = source
@@ -73,9 +72,15 @@ public class WopataLogin {
     public func configure(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError!)")
+        if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
+            let data = NSDictionary(contentsOfFile: path),
+            let clientID = data["CLIENT_ID"] as? String {
+            GIDSignIn.sharedInstance().clientID = clientID
+        }
+
+//        var configureError: NSError?
+//        GGLContext.sharedInstance().configureWithError(&configureError)
+//        assert(configureError == nil, "Error configuring Google services: \(configureError!)")
     }
 
     public func handle(url: URL, application: UIApplication, sourceApplication: String?, annotation: Any?) -> Bool {

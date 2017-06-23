@@ -8,23 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		E4A5149F996C055C4A1B78AB /* Pods_login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D4E77E009121CE02623E93 /* Pods_login.framework */; };
-		F0B21EC61EF95C190039DB3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0B21EC51EF95C190039DB3E /* Images.xcassets */; };
-		F0B21EC81EF965540039DB3E /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21EC71EF965540039DB3E /* InputField.swift */; };
 		F0B21ECC1EFA738F0039DB3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */; };
-		F0B21ECE1EFA9D300039DB3E /* SHKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21ECD1EFA9D300039DB3E /* SHKeyboardViewController.swift */; };
-		F0B21ED01EFAB7860039DB3E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21ECF1EFAB7860039DB3E /* SignUpViewController.swift */; };
-		F0B21ED21EFABAE20039DB3E /* ButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21ED11EFABAE20039DB3E /* ButtonBuilder.swift */; };
-		F0B21ED51EFBA6C50039DB3E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B21ED41EFBA6C50039DB3E /* Extensions.swift */; };
 		F0E2DE421EF90CD0007DD38A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */; };
 		F0E2DE431EF90CD0007DD38A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */; };
 		F0E2DE461EF90CD0007DD38A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE401EF90CD0007DD38A /* Info.plist */; };
 		F0E2DE471EF90CD0007DD38A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE411EF90CD0007DD38A /* ViewController.swift */; };
-		F0E2DE4B1EF90CE3007DD38A /* WopataLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE491EF90CE3007DD38A /* WopataLogin.swift */; };
-		F0E2DE4C1EF90CE3007DD38A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE4A1EF90CE3007DD38A /* LoginViewController.swift */; };
 		F0E2DE511EF90D2B007DD38A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE4D1EF90D2B007DD38A /* LaunchScreen.storyboard */; };
 		F0E2DE521EF90D2B007DD38A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE4F1EF90D2B007DD38A /* Main.storyboard */; };
 		F0E2DE551EF929FB007DD38A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE531EF929FB007DD38A /* Localizable.strings */; };
-		F0E2DE591EF94FF6007DD38A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE581EF94FF6007DD38A /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,23 +24,14 @@
 		A9D4E77E009121CE02623E93 /* Pods_login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0029758662AD26757A9971E /* Pods-login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login.debug.xcconfig"; path = "Pods/Target Support Files/Pods-login/Pods-login.debug.xcconfig"; sourceTree = "<group>"; };
 		F03B75031EF7C9130027CE7D /* login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = login.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0B21EC51EF95C190039DB3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F0B21EC71EF965540039DB3E /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		F0B21ECD1EFA9D300039DB3E /* SHKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHKeyboardViewController.swift; sourceTree = "<group>"; };
-		F0B21ECF1EFAB7860039DB3E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		F0B21ED11EFABAE20039DB3E /* ButtonBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBuilder.swift; sourceTree = "<group>"; };
-		F0B21ED41EFBA6C50039DB3E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Example/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Example/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F0E2DE401EF90CD0007DD38A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Example/Info.plist; sourceTree = SOURCE_ROOT; };
 		F0E2DE411EF90CD0007DD38A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Example/ViewController.swift; sourceTree = SOURCE_ROOT; };
-		F0E2DE491EF90CE3007DD38A /* WopataLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WopataLogin.swift; sourceTree = "<group>"; };
-		F0E2DE4A1EF90CE3007DD38A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F0E2DE4E1EF90D2B007DD38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Example/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		F0E2DE501EF90D2B007DD38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Example/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		F0E2DE541EF929FB007DD38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Example/Base.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
-		F0E2DE581EF94FF6007DD38A /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */,
-				F0E2DE481EF90CE3007DD38A /* Source */,
 				F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */,
 				F0E2DE411EF90CD0007DD38A /* ViewController.swift */,
 				F0E2DE4D1EF90D2B007DD38A /* LaunchScreen.storyboard */,
@@ -115,30 +96,6 @@
 			);
 			path = login;
 			sourceTree = "<group>";
-		};
-		F0B21ED31EFBA6B00039DB3E /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				F0B21ECD1EFA9D300039DB3E /* SHKeyboardViewController.swift */,
-				F0B21ED41EFBA6C50039DB3E /* Extensions.swift */,
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
-		F0E2DE481EF90CE3007DD38A /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				F0B21ED31EFBA6B00039DB3E /* Helpers */,
-				F0E2DE491EF90CE3007DD38A /* WopataLogin.swift */,
-				F0E2DE4A1EF90CE3007DD38A /* LoginViewController.swift */,
-				F0E2DE581EF94FF6007DD38A /* SignInViewController.swift */,
-				F0B21ECF1EFAB7860039DB3E /* SignUpViewController.swift */,
-				F0B21EC71EF965540039DB3E /* InputField.swift */,
-				F0B21ED11EFABAE20039DB3E /* ButtonBuilder.swift */,
-				F0B21EC51EF95C190039DB3E /* Images.xcassets */,
-			);
-			path = Source;
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -207,7 +164,6 @@
 				F0E2DE551EF929FB007DD38A /* Localizable.strings in Resources */,
 				F0E2DE511EF90D2B007DD38A /* LaunchScreen.storyboard in Resources */,
 				F0E2DE431EF90CD0007DD38A /* Assets.xcassets in Resources */,
-				F0B21EC61EF95C190039DB3E /* Images.xcassets in Resources */,
 				F0E2DE461EF90CD0007DD38A /* Info.plist in Resources */,
 				F0E2DE521EF90D2B007DD38A /* Main.storyboard in Resources */,
 				F0B21ECC1EFA738F0039DB3E /* GoogleService-Info.plist in Resources */,
@@ -283,16 +239,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0E2DE4C1EF90CE3007DD38A /* LoginViewController.swift in Sources */,
-				F0E2DE4B1EF90CE3007DD38A /* WopataLogin.swift in Sources */,
-				F0B21ED01EFAB7860039DB3E /* SignUpViewController.swift in Sources */,
 				F0E2DE471EF90CD0007DD38A /* ViewController.swift in Sources */,
-				F0B21ED21EFABAE20039DB3E /* ButtonBuilder.swift in Sources */,
-				F0B21ED51EFBA6C50039DB3E /* Extensions.swift in Sources */,
-				F0E2DE591EF94FF6007DD38A /* SignInViewController.swift in Sources */,
 				F0E2DE421EF90CD0007DD38A /* AppDelegate.swift in Sources */,
-				F0B21EC81EF965540039DB3E /* InputField.swift in Sources */,
-				F0B21ECE1EFA9D300039DB3E /* SHKeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +379,11 @@
 				DEVELOPMENT_TEAM = VLMBA8Q5QL;
 				FACEBOOK_APP_ID = 660286717335832;
 				FACEBOOK_DISPLAY_NAME = Boddy;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source",
+					"$(PROJECT_DIR)/Source/Google",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.mod.register;
@@ -452,6 +405,11 @@
 				DEVELOPMENT_TEAM = VLMBA8Q5QL;
 				FACEBOOK_APP_ID = 660286717335832;
 				FACEBOOK_DISPLAY_NAME = Boddy;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source",
+					"$(PROJECT_DIR)/Source/Google",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.mod.register;
@@ -517,6 +475,11 @@
 				DEVELOPMENT_TEAM = VLMBA8Q5QL;
 				FACEBOOK_APP_ID = 660286717335832;
 				FACEBOOK_DISPLAY_NAME = Boddy;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source",
+					"$(PROJECT_DIR)/Source/Google",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.mod.register;

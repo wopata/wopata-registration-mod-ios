@@ -18,9 +18,9 @@ class ButtonBuilder {
 
     let bundle: Bundle? = {
         return nil
-        let navigationBundle = Bundle(for: SignInViewController.self)
-        let bundleURL = navigationBundle.url(forResource: "Images", withExtension: "bundle")!
-        return Bundle(url: bundleURL)!
+//        let navigationBundle = Bundle(for: SignInViewController.self)
+//        let bundleURL = navigationBundle.url(forResource: "Images", withExtension: "bundle")!
+//        return Bundle(url: bundleURL)!
     }()
 
     func googleButton(title: String) -> UIButton {

@@ -7,11 +7,17 @@ target 'login' do
   pod 'Fabric'
   pod 'Crashlytics'
 
-  pod 'SnapKit'
+  pod 'WopataLogin', path: '.'
 
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
-  pod 'FacebookShare'
+#  pod 'SnapKit'
 
-  pod 'Google/SignIn'
+#  pod 'FacebookCore'
+#  pod 'FacebookLogin'
+#  pod 'FacebookShare'
+
+#  pod 'FBSDKCoreKit', '~> 4.22.1'
+#  pod 'FBSDKLoginKit', '~> 4.22.1'
+#  pod 'FBSDKShareKit', '~> 4.22.1'
+
+#  pod 'GoogleSignIn'
 end

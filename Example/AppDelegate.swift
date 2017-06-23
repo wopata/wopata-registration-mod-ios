@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import WopataLogin
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
