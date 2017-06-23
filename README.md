@@ -26,11 +26,13 @@ $ gem install cocoapods
 To integrate WopataLogin into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
+source 'git@github.com:wopata/wopata-tools.git'
+
 platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'WopataLogin', '~> 1.0.0'
+    pod 'WopataLogin', '~> 0.2.0'
 end
 ```
 
