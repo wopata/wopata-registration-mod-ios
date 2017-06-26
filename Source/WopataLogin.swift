@@ -60,15 +60,15 @@ public class WopataLogin {
         return WopataLogin()
     }()
 
-    public func addError(field: WopataLoginField, message: String) {
-        guard let top = (mainController as? UINavigationController)?.visibleViewController as? ErrorHandler else { return }
-        top.addError(field: field, message: message)
-    }
-
     public lazy var mainController: UIViewController = {
         let navigation = UINavigationController(rootViewController: LoginViewController())
         return navigation
     }()
+
+    public func addError(field: WopataLoginField, message: String) {
+        guard let top = (mainController as? UINavigationController)?.visibleViewController as? ErrorHandler else { return }
+        top.addError(field: field, message: message)
+    }
 
     public func configure(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
