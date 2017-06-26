@@ -377,8 +377,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 15.master;
 				DEVELOPMENT_TEAM = VLMBA8Q5QL;
-				FACEBOOK_APP_ID = 660286717335832;
-				FACEBOOK_DISPLAY_NAME = Boddy;
+				FACEBOOK_APP_ID = 1941867186027373;
+				FACEBOOK_DISPLAY_NAME = WopataTestApplication;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Source",
@@ -387,10 +387,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.mod.register;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.test.application;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46e0e0a8-7d62-4400-90d1-03e563499352";
-				PROVISIONING_PROFILE_SPECIFIER = "WopataLogin DEV";
+				PROVISIONING_PROFILE = "69eb994e-529b-4f30-9509-9cc137c8769c";
+				PROVISIONING_PROFILE_SPECIFIER = "WopataTest DEV";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -404,8 +404,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 15.master;
 				DEVELOPMENT_TEAM = VLMBA8Q5QL;
-				FACEBOOK_APP_ID = 660286717335832;
-				FACEBOOK_DISPLAY_NAME = Boddy;
+				FACEBOOK_APP_ID = 1941867186027373;
+				FACEBOOK_DISPLAY_NAME = WopataTestApplication;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Source",
@@ -414,10 +414,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.mod.register;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.test.application;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "26a64096-9dba-4ee6-97ae-e84a0cdb4804";
-				PROVISIONING_PROFILE_SPECIFIER = "WopataLogin InHouse";
+				PROVISIONING_PROFILE = "a2e672a0-6c9e-4949-905b-a818f6555657";
+				PROVISIONING_PROFILE_SPECIFIER = "WopataTest InHouse";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -475,8 +475,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 15.master;
 				DEVELOPMENT_TEAM = VLMBA8Q5QL;
-				FACEBOOK_APP_ID = 660286717335832;
-				FACEBOOK_DISPLAY_NAME = Boddy;
+				FACEBOOK_APP_ID = 1941867186027373;
+				FACEBOOK_DISPLAY_NAME = WopataTestApplication;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Source",
@@ -485,10 +485,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.mod.register;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wopata.test.application;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "26a64096-9dba-4ee6-97ae-e84a0cdb4804";
-				PROVISIONING_PROFILE_SPECIFIER = "WopataLogin InHouse";
+				PROVISIONING_PROFILE = "a2e672a0-6c9e-4949-905b-a818f6555657";
+				PROVISIONING_PROFILE_SPECIFIER = "WopataTest InHouse";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
