@@ -76,84 +76,96 @@ class SignInViewController: SHKeyboardViewController {
             $0.edges.equalToSuperview()
         }
 
-        let container = UIView()
-        scrollView.addSubview(container)
-        container.snp.makeConstraints {
+        let main = UIView()
+        scrollView.addSubview(main)
+        main.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.height.equalTo(view)
         }
 
-        let google = ButtonBuilder.shared.googleButton(title: NSLocalizedString("LoginWithGoogle", comment: "Se connecter avec Google"))
-        google.addTarget(self, action: #selector(loginWithGoogle), for: .touchUpInside)
-        container.addSubview(google)
-        google.snp.makeConstraints {
-            $0.left.top.equalTo(35)
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 12
+        main.addSubview(stack)
+        stack.snp.makeConstraints {
+            $0.top.left.equalTo(35)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(45)
         }
 
-        let facebook = ButtonBuilder.shared.facebookButton(title: NSLocalizedString("LoginWithFacebook", comment: "Se connecter avec Facebook"))
-        facebook.addTarget(self, action: #selector(loginWithFacebook), for: .touchUpInside)
-        container.addSubview(facebook)
-        facebook.snp.makeConstraints {
-            $0.left.equalTo(35)
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(45)
-            $0.top.equalTo(google.snp.bottom).offset(12)
+        if config.signinModes.contains(.google) {
+            let google = ButtonBuilder.shared.googleButton(title: NSLocalizedString("LoginWithGoogle", comment: "Se connecter avec Google"))
+            google.addTarget(self, action: #selector(loginWithGoogle), for: .touchUpInside)
+            google.snp.makeConstraints {
+                $0.height.equalTo(45)
+            }
+            stack.addArrangedSubview(google)
         }
 
-        let or = ButtonBuilder.shared.orSeparator()
-        container.addSubview(or)
-        or.snp.makeConstraints {
-            $0.left.equalTo(35)
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(facebook.snp.bottom).offset(32)
+        if config.signinModes.contains(.facebook) {
+            let facebook = ButtonBuilder.shared.facebookButton(title: NSLocalizedString("LoginWithFacebook", comment: "Se connecter avec Facebook"))
+            facebook.addTarget(self, action: #selector(loginWithFacebook), for: .touchUpInside)
+            facebook.snp.makeConstraints {
+                $0.height.equalTo(45)
+            }
+            stack.addArrangedSubview(facebook)
         }
 
-        emailField = EmailField(font: config.font)
-        emailField.tintColor = config.ctaBackgroundColor
-        container.addSubview(emailField)
-        emailField.snp.makeConstraints {
-            $0.left.equalTo(35)
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(or.snp.bottom).offset(40)
-        }
-        emailField.valueChanged = { self.emailValue = $0 }
+        if config.signinModes.contains(.email) {
+            if config.signinModes.contains(.google) || config.signinModes.contains(.facebook) {
+                let or = ButtonBuilder.shared.orSeparator()
+                let container = UIView()
+                container.addSubview(or)
+                or.snp.makeConstraints {
+                    $0.top.equalTo(23)
+                    $0.bottom.left.right.equalToSuperview()
+                }
+                stack.addArrangedSubview(container)
+            }
 
-        pwdField = PasswordField(font: config.font)
-        pwdField.tintColor = config.ctaBackgroundColor
-        container.addSubview(pwdField)
-        pwdField.snp.makeConstraints {
-            $0.left.equalTo(35)
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(emailField.snp.bottom).offset(12)
-        }
-        pwdField.valueChanged = { self.pwdValue = $0 }
-        emailField.returnKeyPressed = { _ = self.pwdField.becomeFirstResponder() }
+            let form = UIView()
+            emailField = EmailField(font: config.font)
+            emailField.tintColor = config.ctaBackgroundColor
+            form.addSubview(emailField)
+            emailField.snp.makeConstraints {
+                $0.left.right.equalToSuperview()
+                $0.top.equalTo(28)
+            }
+            emailField.valueChanged = { self.emailValue = $0 }
 
-        button = ButtonBuilder.shared.mainButton(title: NSLocalizedString("LoginButtonTitle", comment: "Se connecter"))
-        button.addTarget(self, action: #selector(loginWithEmail), for: .touchUpInside)
-        container.addSubview(button)
-        button.snp.makeConstraints {
-            $0.left.equalTo(35)
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(45)
-            $0.top.equalTo(pwdField.snp.bottom).offset(40)
-        }
+            pwdField = PasswordField(font: config.font)
+            pwdField.tintColor = config.ctaBackgroundColor
+            form.addSubview(pwdField)
+            pwdField.snp.makeConstraints {
+                $0.left.right.equalToSuperview()
+                $0.top.equalTo(emailField.snp.bottom).offset(12)
+            }
+            pwdField.valueChanged = { self.pwdValue = $0 }
+            emailField.returnKeyPressed = { _ = self.pwdField.becomeFirstResponder() }
 
-        let reset = ButtonBuilder.shared.resetButton()
-        reset.addTarget(self, action: #selector(resetEmail), for: .touchUpInside)
-        container.addSubview(reset)
-        reset.snp.makeConstraints {
-            $0.left.equalTo(35)
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(45)
-            $0.top.equalTo(button.snp.bottom)
+            button = ButtonBuilder.shared.mainButton(title: NSLocalizedString("LoginButtonTitle", comment: "Se connecter"))
+            button.addTarget(self, action: #selector(loginWithEmail), for: .touchUpInside)
+            form.addSubview(button)
+            button.snp.makeConstraints {
+                $0.left.right.equalToSuperview()
+                $0.height.equalTo(45)
+                $0.top.equalTo(pwdField.snp.bottom).offset(40)
+            }
+
+            let reset = ButtonBuilder.shared.resetButton()
+            reset.addTarget(self, action: #selector(resetEmail), for: .touchUpInside)
+            form.addSubview(reset)
+            reset.snp.makeConstraints {
+                $0.left.right.equalToSuperview()
+                $0.height.equalTo(45)
+                $0.top.equalTo(button.snp.bottom)
+                $0.bottom.equalToSuperview()
+            }
+            stack.addArrangedSubview(form)
         }
 
         let footer = ButtonBuilder.shared.footer(title1: NSLocalizedString("LoginNoAccount", comment: "Pas encore de compte"), title2: NSLocalizedString("LoginRegister", comment: "Inscription"))
         footer.addTarget(self, action: #selector(signUp), for: .touchUpInside)
-        container.addSubview(footer)
+        main.addSubview(footer)
         footer.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
             $0.height.equalTo(60)
@@ -168,7 +180,11 @@ class SignInViewController: SHKeyboardViewController {
 
     override func keyboardWillShow(_ notification: Notification) {
         super.keyboardWillShow(notification)
-        scrollView.contentOffset = CGPoint(x: 0, y: 190)
+        if config.signinModes.contains(.google) && config.signinModes.contains(.facebook) {
+            scrollView.contentOffset = CGPoint(x: 0, y: 190)
+        } else if config.signinModes.contains(.google) || config.signinModes.contains(.facebook) {
+            scrollView.contentOffset = CGPoint(x: 0, y: 140)
+        }
     }
 }
 

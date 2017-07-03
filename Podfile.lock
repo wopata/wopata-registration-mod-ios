@@ -29,7 +29,7 @@ PODS:
     - FBSDKCoreKit
   - KVNProgress (2.3.1)
   - SnapKit (3.2.0)
-  - WopataLogin (0.1.0):
+  - WopataLogin (0.2.1):
     - FacebookCore (~> 0.2.0)
     - FacebookLogin (~> 0.2.0)
     - FacebookShare (~> 0.2.0)
@@ -60,8 +60,8 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 1cbd0fdc2bb3277dd3522512855dcf1f4088f734
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  WopataLogin: d15e9ac77227f7f54a6efb9f06699916340bb7ac
+  WopataLogin: 8b2d1c8c395cb156ea325995fb79a152958392a8
 
-PODFILE CHECKSUM: 89dff3920991a9f83bbab0db4a2f34b302cd4580
+PODFILE CHECKSUM: 7b652ed4a708eaa863589336e3372353a2f167c6
 
 COCOAPODS: 1.2.1

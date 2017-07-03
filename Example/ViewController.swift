@@ -32,6 +32,9 @@ class ViewController: UIViewController {
         brand.contentMode = .scaleAspectFit
         brand.snp.makeConstraints { $0.width.equalTo(182) }
         config.landingBrandView = brand
+
+        config.signinModes = [.google, .email]
+
         WopataLogin.shared.config = config
 
         WopataLogin.shared.signedIn = { user in

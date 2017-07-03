@@ -11,6 +11,9 @@ import UIKit
 import FBSDKCoreKit
 import GoogleSignIn
 
+public enum SigninMode {
+    case facebook, google, email
+}
 public class WopataLoginConfiguration {
     public var landingBackgroundImage: UIImage? = nil
     public var landingBrandView: UIView? = nil
@@ -23,6 +26,8 @@ public class WopataLoginConfiguration {
     public var ctaTextColor: UIColor = .white
 
     public var font: UIFont = .systemFont(ofSize: 14)
+
+    public var signinModes: [SigninMode] = [.google, .facebook, .email]
 
     public static let `default`: WopataLoginConfiguration = {
         let config = WopataLoginConfiguration()
@@ -78,10 +83,6 @@ public class WopataLogin {
             let clientID = data["CLIENT_ID"] as? String {
             GIDSignIn.sharedInstance().clientID = clientID
         }
-
-//        var configureError: NSError?
-//        GGLContext.sharedInstance().configureWithError(&configureError)
-//        assert(configureError == nil, "Error configuring Google services: \(configureError!)")
     }
 
     public func handle(url: URL, application: UIApplication, sourceApplication: String?, annotation: Any?) -> Bool {

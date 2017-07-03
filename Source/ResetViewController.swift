@@ -56,7 +56,7 @@ class ResetViewController: SHKeyboardViewController {
         emailField.tintColor = config.ctaBackgroundColor
         container.addSubview(emailField)
         emailField.snp.makeConstraints {
-            $0.top.equalTo(80)
+            $0.top.equalTo(40)
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
         }
@@ -71,14 +71,6 @@ class ResetViewController: SHKeyboardViewController {
             $0.height.equalTo(45)
             $0.top.equalTo(emailField.snp.bottom).offset(40)
         }
-
-//        let footer = ButtonBuilder.shared.footer(title1: NSLocalizedString("SignupWithAccount", comment: "Déjà un compte"), title2: NSLocalizedString("SignupConnect", comment: "Connexion"))
-//        footer.addTarget(self, action: #selector(signIn), for: .touchUpInside)
-//        container.addSubview(footer)
-//        footer.snp.makeConstraints {
-//            $0.left.right.bottom.equalToSuperview()
-//            $0.height.equalTo(60)
-//        }
     }
 
     private func updateButton() {
