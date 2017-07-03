@@ -6,31 +6,28 @@
   Copyright © 2017 Wopata. All rights reserved.
 */
 
-"LandingCTAText" = "Commencer";
-"LandingText" = "Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi";
-
-"SignInTitle" = "Se connecter";
-"LoginWithGoogle" = "Se connecter avec Google";
-"LoginWithFacebook" = "Se connecter avec Facebook";
-"EmailAddress" = "Adresse email";
-"Password" = "Mot de passe";
-"LoginButtonTitle" = "Se connecter";
-"LoginResetTitle" = "Mot de passe oublié ?";
-"LoginNoAccount" = "Pas encore de compte ?";
-"LoginRegister" = "Inscription";
-
-"SignUpTitle" = "S'inscrire";
-"SignupWithGoogle" = "Se connecter avec Google";
-"SignupWithFacebook" = "Se connecter avec Facebook";
-"SignupButtonTitle" = "S'inscrire";
-"SignupWithAccount" = "Déjà un compte ?";
-"SignupConnect" = "Connexion";
-
-"ResetTitle" = "Réinitialisation";
-"ResetButtonTitle" = "Réinitialiser";
-
-"ErrorEmailEmpty" = "L'email ne doit pas être vide";
-"ErrorEmailInvalid" = "L'email est invalide";
-"ErrorPasswordEmpty" = "Le mot de passe ne doit pas être vide";
-
-"OR" = "Ou";
+"landing_cta_text" = "Commencer";
+"landing_text" = "Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi";
+// Sign in
+"sign_in_title" = "Se connecter";
+"login_with_facebook" = "Se connecter avec Facebook";
+"email_address" = "Adresse email";
+"password" = "Mot de passe";
+"login_button_title" = "Se connecter";
+"login_reset_title" = "Mot de passe oublié ?";
+"login_no_account" = "Pas encore de compte ?";
+"login_register" = "Inscription";
+// Sign up
+"sign_up_title" = "S'inscrire";
+"signup_with_facebook" = "Se connecter avec Facebook";
+"signup_button_title" = "S'inscrire";
+"signup_with_account" = "Déjà un compte ?";
+"signup_connect" = "Connexion";
+// Reset
+"reset_title" = "Réinitialisation";
+"reset_button_title" = "Réinitialiser";
+// Commons
+"error_email_empty" = "L'email ne doit pas être vide";
+"error_email_invalid" = "L'email est invalide";
+"error_password_empty" = "Le mot de passe ne doit pas être vide";
+"or" = "Ou";

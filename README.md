@@ -32,7 +32,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'WopataLogin', '~> 0.2.0'
+    pod 'WopataLogin', '~> 0.5.0'
 end
 ```
 
@@ -168,6 +168,8 @@ config.landingBrandView = brand
 
 config.ctaBackgroundColor = UIColor.red
 config.ctaFont = UIFont.boldSystemFont(ofSize: 15)
+
+config.signinModes = [.facebook, .email]
 
 WopataLogin.shared.config = config
 ```

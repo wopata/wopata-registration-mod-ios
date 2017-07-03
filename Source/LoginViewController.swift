@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
 
         let button = UIButton(type: .custom)
         button.backgroundColor = config.ctaBackgroundColor
-        button.setTitle(NSLocalizedString("LandingCTAText", comment: "Commencer").uppercased(), for: .normal)
+        button.setTitle(NSLocalizedString("landing_cta_text", comment: "Commencer").uppercased(), for: .normal)
         button.titleLabel?.font = config.ctaFont
         button.layer.cornerRadius = 3
         view.addSubview(button)
@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
         paragraph.lineHeightMultiple = 1.5
         paragraph.alignment = .center
         let attributedString = NSAttributedString(
-            string: NSLocalizedString("LandingText", comment: "Lorem Ipsum"),
+            string: NSLocalizedString("landing_text", comment: "Lorem Ipsum"),
             attributes: [
                 NSFontAttributeName: config.landingTextFont,
                 NSParagraphStyleAttributeName: paragraph,

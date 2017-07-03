@@ -83,7 +83,7 @@ class ButtonBuilder {
         container.addSubview(line2)
 
         let label = UILabel()
-        label.text = NSLocalizedString("OR", comment: "ou").uppercased()
+        label.text = NSLocalizedString("or", comment: "ou").uppercased()
         label.textColor = UIColor(white: 0, alpha: 0.5)
         label.font = config.font.withSize(12)
         container.addSubview(label)
@@ -118,7 +118,7 @@ class ButtonBuilder {
 
     func resetButton() -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle(NSLocalizedString("LoginResetTitle", comment: "Mot de passe oublié ?"), for: .normal)
+        button.setTitle(NSLocalizedString("login_reset_title", comment: "Mot de passe oublié ?"), for: .normal)
         button.backgroundColor = .clear
         button.setTitleColor(UIColor(white: 0, alpha: 0.5), for: .normal)
         button.titleLabel?.font = config.font.withSize(14)
