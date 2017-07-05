@@ -29,7 +29,7 @@ class ResetViewController: SHKeyboardViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = NSLocalizedString("reset_title", comment: "S'inscrire")
+        title = localize("reset_title")
     }
 
     override func loadView() {
@@ -62,7 +62,7 @@ class ResetViewController: SHKeyboardViewController {
         }
         emailField.valueChanged = { self.emailValue = $0 }
 
-        button = ButtonBuilder.shared.mainButton(title: NSLocalizedString("reset_button_title", comment: "Réinitialiser"))
+        button = ButtonBuilder.shared.mainButton(title: localize("reset_button_title"))
         button.addTarget(self, action: #selector(resetWithEmail), for: .touchUpInside)
         container.addSubview(button)
         button.snp.makeConstraints {

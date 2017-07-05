@@ -193,7 +193,7 @@ class InputField: UIView, UITextFieldDelegate {
 
 class EmailField: InputField {
     convenience init(font: UIFont) {
-        self.init(font: font, label: NSLocalizedString("email_address", comment: "Adresse email"), value: nil)
+        self.init(font: font, label: localize("email_address"), value: nil)
         field.isSecureTextEntry = false
         field.keyboardType = .emailAddress
         field.returnKeyType = .next
@@ -201,13 +201,13 @@ class EmailField: InputField {
 
     override func isValid(text: String?) -> String? {
         guard let text = text, !text.isEmpty else {
-            return NSLocalizedString("error_email_empty", comment: "L'email ne doit pas être vide")
+            return localize("error_email_empty")
         }
 
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         guard emailTest.evaluate(with: text) else {
-            return NSLocalizedString("error_email_invalid", comment: "L'email est invalide")
+            return localize("error_email_invalid")
         }
 
         return nil
@@ -216,7 +216,7 @@ class EmailField: InputField {
 
 class PasswordField: InputField {
     convenience init(font: UIFont) {
-        self.init(font: font, label: NSLocalizedString("password", comment: "Mot de passe"), value: nil)
+        self.init(font: font, label: localize("password"), value: nil)
         field.isSecureTextEntry = true
         field.keyboardType = .default
         field.returnKeyType = .done
@@ -224,7 +224,7 @@ class PasswordField: InputField {
 
     override func isValid(text: String?) -> String? {
         if text?.isEmpty != false {
-            return NSLocalizedString("error_password_empty", comment: "Le mot de passe ne doit pas être vide")
+            return localize("error_password_empty")
         }
 
         return nil

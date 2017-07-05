@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E4A5149F996C055C4A1B78AB /* Pods_login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D4E77E009121CE02623E93 /* Pods_login.framework */; };
+		F01BAB131F0D403500294C66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F01BAB151F0D403500294C66 /* Localizable.strings */; };
 		F0B21ECC1EFA738F0039DB3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */; };
 		F0E2DE421EF90CD0007DD38A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */; };
 		F0E2DE431EF90CD0007DD38A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */; };
@@ -15,7 +16,6 @@
 		F0E2DE471EF90CD0007DD38A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2DE411EF90CD0007DD38A /* ViewController.swift */; };
 		F0E2DE511EF90D2B007DD38A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE4D1EF90D2B007DD38A /* LaunchScreen.storyboard */; };
 		F0E2DE521EF90D2B007DD38A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE4F1EF90D2B007DD38A /* Main.storyboard */; };
-		F0E2DE551EF929FB007DD38A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0E2DE531EF929FB007DD38A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +23,8 @@
 		A12475848CFB588ED2138EFF /* Pods-login.inhouse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login.inhouse.xcconfig"; path = "Pods/Target Support Files/Pods-login/Pods-login.inhouse.xcconfig"; sourceTree = "<group>"; };
 		A9D4E77E009121CE02623E93 /* Pods_login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0029758662AD26757A9971E /* Pods-login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login.debug.xcconfig"; path = "Pods/Target Support Files/Pods-login/Pods-login.debug.xcconfig"; sourceTree = "<group>"; };
+		F01BAB161F0D404200294C66 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F01BAB171F0D405200294C66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F03B75031EF7C9130027CE7D /* login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = login.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Example/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -31,7 +33,6 @@
 		F0E2DE411EF90CD0007DD38A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Example/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		F0E2DE4E1EF90D2B007DD38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Example/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		F0E2DE501EF90D2B007DD38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Example/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		F0E2DE541EF929FB007DD38A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Example/Base.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +91,9 @@
 				F0E2DE411EF90CD0007DD38A /* ViewController.swift */,
 				F0E2DE4D1EF90D2B007DD38A /* LaunchScreen.storyboard */,
 				F0E2DE4F1EF90D2B007DD38A /* Main.storyboard */,
-				F0E2DE531EF929FB007DD38A /* Localizable.strings */,
 				F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */,
 				F0E2DE401EF90CD0007DD38A /* Info.plist */,
+				F01BAB151F0D403500294C66 /* Localizable.strings */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -145,6 +146,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = F03B74FA1EF7C9130027CE7D;
 			productRefGroup = F03B75041EF7C9130027CE7D /* Products */;
@@ -161,8 +163,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0E2DE551EF929FB007DD38A /* Localizable.strings in Resources */,
 				F0E2DE511EF90D2B007DD38A /* LaunchScreen.storyboard in Resources */,
+				F01BAB131F0D403500294C66 /* Localizable.strings in Resources */,
 				F0E2DE431EF90CD0007DD38A /* Assets.xcassets in Resources */,
 				F0E2DE461EF90CD0007DD38A /* Info.plist in Resources */,
 				F0E2DE521EF90D2B007DD38A /* Main.storyboard in Resources */,
@@ -247,6 +249,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F01BAB151F0D403500294C66 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F01BAB161F0D404200294C66 /* fr */,
+				F01BAB171F0D405200294C66 /* en */,
+			);
+			name = Localizable.strings;
+			path = Example;
+			sourceTree = SOURCE_ROOT;
+		};
 		F0E2DE4D1EF90D2B007DD38A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -263,14 +275,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		F0E2DE531EF929FB007DD38A /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F0E2DE541EF929FB007DD38A /* Base */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -278,6 +282,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -329,6 +334,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -427,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

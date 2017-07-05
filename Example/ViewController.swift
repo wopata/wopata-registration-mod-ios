@@ -33,7 +33,10 @@ class ViewController: UIViewController {
         brand.snp.makeConstraints { $0.width.equalTo(182) }
         config.landingBrandView = brand
 
-        config.signinModes = [.google, .email]
+        config.signinModes = [.google, .facebook, .email]
+        config.facebookPermissions = ["public_profile"]
+
+        config.landingText = NSLocalizedString("landing_text", comment: "")
 
         WopataLogin.shared.config = config
 

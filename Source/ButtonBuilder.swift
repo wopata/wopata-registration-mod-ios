@@ -16,12 +16,6 @@ class ButtonBuilder {
         return ButtonBuilder()
     }()
 
-    let bundle: Bundle? = {
-        let navigationBundle = Bundle(for: ButtonBuilder.self)
-        guard let bundleURL = navigationBundle.url(forResource: "WopataLogin", withExtension: "bundle") else { return nil }
-        return Bundle(url: bundleURL)
-    }()
-
     func googleButton(title: String) -> UIButton {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "google-icon", in: bundle, compatibleWith: nil), for: .normal)
@@ -83,7 +77,7 @@ class ButtonBuilder {
         container.addSubview(line2)
 
         let label = UILabel()
-        label.text = NSLocalizedString("or", comment: "ou").uppercased()
+        label.text = localize("or").uppercased()
         label.textColor = UIColor(white: 0, alpha: 0.5)
         label.font = config.font.withSize(12)
         container.addSubview(label)
@@ -118,7 +112,7 @@ class ButtonBuilder {
 
     func resetButton() -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle(NSLocalizedString("login_reset_title", comment: "Mot de passe oublié ?"), for: .normal)
+        button.setTitle(localize("login_reset_title"), for: .normal)
         button.backgroundColor = .clear
         button.setTitleColor(UIColor(white: 0, alpha: 0.5), for: .normal)
         button.titleLabel?.font = config.font.withSize(14)

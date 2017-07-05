@@ -11,12 +11,26 @@ import UIKit
 import FBSDKCoreKit
 import GoogleSignIn
 
+let bundle: Bundle? = {
+    let navigationBundle = Bundle(for: ButtonBuilder.self)
+    guard let bundleURL = navigationBundle.url(forResource: "WopataLogin", withExtension: "bundle") else { return nil }
+    return Bundle(url: bundleURL)
+}()
+
+func localize(_ string: String) -> String {
+    guard let bundle = bundle else { return string }
+    return NSLocalizedString(string, bundle: bundle, comment: "")
+}
+
 public enum SigninMode {
     case facebook, google, email
 }
 public class WopataLoginConfiguration {
     public var landingBackgroundImage: UIImage? = nil
     public var landingBrandView: UIView? = nil
+    public var landingText: String? = nil
+
+    public var facebookPermissions: [String] = ["public_profile"]
 
     public var landingTextFont: UIFont = .systemFont(ofSize: 18, weight: UIFontWeightMedium)
     public var landingTextColor: UIColor = .white

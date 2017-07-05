@@ -36,7 +36,7 @@ class SignUpViewController: SHKeyboardViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = NSLocalizedString("sign_up_title", comment: "S'inscrire")
+        title = localize("sign_up_title")
     }
 
     override func loadView() {
@@ -89,7 +89,7 @@ class SignUpViewController: SHKeyboardViewController {
             pwdField.valueChanged = { self.pwdValue = $0 }
             emailField.returnKeyPressed = { _ = self.pwdField.becomeFirstResponder() }
 
-            button = ButtonBuilder.shared.mainButton(title: NSLocalizedString("signup_button_title", comment: "S'inscrire"))
+            button = ButtonBuilder.shared.mainButton(title: localize("signup_button_title"))
             button.addTarget(self, action: #selector(signupWithEmail), for: .touchUpInside)
             form.addSubview(button)
             button.snp.makeConstraints {
@@ -113,7 +113,7 @@ class SignUpViewController: SHKeyboardViewController {
         }
 
         if config.signinModes.contains(.google) {
-            let google = ButtonBuilder.shared.googleButton(title: NSLocalizedString("signup_with_google", comment: "Se connecter avec Google"))
+            let google = ButtonBuilder.shared.googleButton(title: localize("signup_with_google"))
             google.addTarget(self, action: #selector(signupWithGoogle), for: .touchUpInside)
             google.snp.makeConstraints {
                 $0.height.equalTo(45)
@@ -122,7 +122,7 @@ class SignUpViewController: SHKeyboardViewController {
         }
 
         if config.signinModes.contains(.facebook) {
-            let facebook = ButtonBuilder.shared.facebookButton(title: NSLocalizedString("signup_with_facebook", comment: "Se connecter avec Facebook"))
+            let facebook = ButtonBuilder.shared.facebookButton(title: localize("signup_with_facebook"))
             facebook.addTarget(self, action: #selector(signupWithFacebook), for: .touchUpInside)
             facebook.snp.makeConstraints {
                 $0.height.equalTo(45)
@@ -130,7 +130,7 @@ class SignUpViewController: SHKeyboardViewController {
             stack.addArrangedSubview(facebook)
         }
 
-        let footer = ButtonBuilder.shared.footer(title1: NSLocalizedString("signup_with_account", comment: "Déjà un compte"), title2: NSLocalizedString("signup_connect", comment: "Connexion"))
+        let footer = ButtonBuilder.shared.footer(title1: localize("signup_with_account"), title2: localize("signup_connect"))
         footer.addTarget(self, action: #selector(signIn), for: .touchUpInside)
         main.addSubview(footer)
         footer.snp.makeConstraints {
@@ -166,7 +166,7 @@ extension SignUpViewController: ErrorHandler {
 extension SignUpViewController: GIDSignInDelegate, GIDSignInUIDelegate {
     func signupWithFacebook() {
         let login = FBSDKLoginManager()
-        login.logIn(withReadPermissions: ["public_profile"], from: self) { result, error in
+        login.logIn(withReadPermissions: config.facebookPermissions, from: self) { result, error in
             guard let result = result, error == nil, !result.isCancelled else { return }
             self.signedUp?(User(source: .facebook, token: FBSDKAccessToken.current().tokenString))
         }

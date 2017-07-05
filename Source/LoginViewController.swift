@@ -13,26 +13,29 @@ import SnapKit
 class LoginViewController: UIViewController {
     let config = WopataLogin.shared.config
 
+    var backgroundImage: UIImageView!
+    var logoContainer: UIView!
+    var text: UILabel!
+
     override func loadView() {
         super.loadView()
         setupNavigation()
 
-        let backgroundImage = UIImageView(image: config.landingBackgroundImage)
+        backgroundImage = UIImageView(image: config.landingBackgroundImage)
         view.addSubview(backgroundImage)
         backgroundImage.snp.makeConstraints { $0.edges.equalToSuperview() }
 
-        if let logo = config.landingBrandView {
-            view.addSubview(logo)
-            logo.snp.makeConstraints {
-                $0.top.equalTo(80)
-                $0.left.greaterThanOrEqualTo(35)
-                $0.centerX.equalToSuperview()
-            }
+        logoContainer = UIView()
+        view.addSubview(logoContainer)
+        logoContainer.snp.makeConstraints {
+            $0.top.equalTo(80)
+            $0.left.greaterThanOrEqualTo(35)
+            $0.centerX.equalToSuperview()
         }
 
         let button = UIButton(type: .custom)
         button.backgroundColor = config.ctaBackgroundColor
-        button.setTitle(NSLocalizedString("landing_cta_text", comment: "Commencer").uppercased(), for: .normal)
+        button.setTitle(localize("landing_cta_text").uppercased(), for: .normal)
         button.titleLabel?.font = config.ctaFont
         button.layer.cornerRadius = 3
         view.addSubview(button)
@@ -45,7 +48,7 @@ class LoginViewController: UIViewController {
         button.addTarget(self, action: #selector(start), for: .touchUpInside)
 
 
-        let text = UILabel()
+        text = UILabel()
         text.textAlignment = .center
         text.numberOfLines = 0
         view.addSubview(text)
@@ -54,26 +57,42 @@ class LoginViewController: UIViewController {
             $0.centerX.equalToSuperview()
             $0.left.equalTo(35)
         }
-
-        let paragraph = NSMutableParagraphStyle()
-        paragraph.lineHeightMultiple = 1.5
-        paragraph.alignment = .center
-        let attributedString = NSAttributedString(
-            string: NSLocalizedString("landing_text", comment: "Lorem Ipsum"),
-            attributes: [
-                NSFontAttributeName: config.landingTextFont,
-                NSParagraphStyleAttributeName: paragraph,
-                NSForegroundColorAttributeName: config.landingTextColor,
-                NSKernAttributeName: 1.8
-            ])
-        text.attributedText = attributedString
+        text.text = nil
 
         title = ""
     }
 
     override func viewWillAppear(_ animated: Bool) {
         setupNavigation()
+        loadConfig()
         super.viewWillAppear(animated)
+    }
+
+    private func loadConfig() {
+        backgroundImage.image = config.landingBackgroundImage
+
+        for v in logoContainer.subviews { v.removeFromSuperview() }
+        if let brand = config.landingBrandView {
+            logoContainer.addSubview(brand)
+            brand.snp.makeConstraints { $0.edges.equalToSuperview() }
+        }
+
+        if let landing = config.landingText {
+            let paragraph = NSMutableParagraphStyle()
+            paragraph.lineHeightMultiple = 1.5
+            paragraph.alignment = .center
+            let attributedString = NSAttributedString(
+                string: landing,
+                attributes: [
+                    NSFontAttributeName: config.landingTextFont,
+                    NSParagraphStyleAttributeName: paragraph,
+                    NSForegroundColorAttributeName: config.landingTextColor,
+                    NSKernAttributeName: 1.8
+                ])
+            text.attributedText = attributedString
+        } else {
+            text.text = nil
+        }
     }
 
     private func setupNavigation() {

@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  login
+
+  Created by Guillaume Bellue on 20/06/2017.
+  Copyright © 2017 Wopata. All rights reserved.
+*/
+
+"landing_cta_text" = "Start";
+// Sign in
+"sign_in_title" = "Sign in";
+"login_with_google" = "Sign in with Google";
+"login_with_facebook" = "Sign in with Facebook";
+"email_address" = "E-mail Address";
+"password" = "Password";
+"login_button_title" = "Sign in";
+"login_reset_title" = "Forgotten password?";
+"login_no_account" = "No account?";
+"login_register" = "Sign up";
+// Sign up
+"sign_up_title" = "Sign up";
+"signup_with_google" = "Sign up with Google";
+"signup_with_facebook" = "Sign up with Facebook";
+"signup_button_title" = "Sign up";
+"signup_with_account" = "Already have an account?";
+"signup_connect" = "Sign in";
+// Reset
+"reset_title" = "Reset";
+"reset_button_title" = "Reset";
+// Commons
+"error_email_empty" = "The e-mail cannot be blank";
+"error_email_invalid" = "The e-mail is not valid";
+"error_password_empty" = "The password cannot be blank";
+"or" = "Or";
