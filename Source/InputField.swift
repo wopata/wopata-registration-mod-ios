@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class InputField: UIView, UITextFieldDelegate {
+public class InputField: UIView, UITextFieldDelegate {
     let legend = UILabel()
     let errorLabel = UILabel()
     let field = UITextField()
@@ -21,7 +21,7 @@ class InputField: UIView, UITextFieldDelegate {
     var valueChanged: ((String?) -> Void)?
     var returnKeyPressed: (() -> Void)!
 
-    override var tintColor: UIColor! {
+    override public var tintColor: UIColor! {
         didSet {
             field.tintColor = tintColor
         }
@@ -35,7 +35,7 @@ class InputField: UIView, UITextFieldDelegate {
         loadView()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadView()
     }
@@ -98,13 +98,13 @@ class InputField: UIView, UITextFieldDelegate {
     }
 
     var offset: CGFloat = -1
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         guard offset < 0 else { return }
         offset = self.legend.frame.width * 0.1
     }
 
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         legend.snp.remakeConstraints {
             $0.left.top.equalToSuperview()
         }
@@ -120,7 +120,7 @@ class InputField: UIView, UITextFieldDelegate {
         return true
     }
 
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         legend.snp.remakeConstraints {
             $0.left.equalToSuperview()
             if field.text?.isEmpty == false {
@@ -148,7 +148,7 @@ class InputField: UIView, UITextFieldDelegate {
         return true
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         returnKeyPressed()
         return true
     }
@@ -158,7 +158,7 @@ class InputField: UIView, UITextFieldDelegate {
         valueChanged?(value)
     }
 
-    override func becomeFirstResponder() -> Bool {
+    override public func becomeFirstResponder() -> Bool {
         return field.becomeFirstResponder()
     }
 
@@ -178,7 +178,7 @@ class InputField: UIView, UITextFieldDelegate {
         return true
     }
 
-    func isValid(text: String?) -> String? {
+    internal func isValid(text: String?) -> String? {
         return nil
     }
 
@@ -199,7 +199,7 @@ class EmailField: InputField {
         field.returnKeyType = .next
     }
 
-    override func isValid(text: String?) -> String? {
+    override internal func isValid(text: String?) -> String? {
         guard let text = text, !text.isEmpty else {
             return localize("error_email_empty")
         }
@@ -222,7 +222,7 @@ class PasswordField: InputField {
         field.returnKeyType = .done
     }
 
-    override func isValid(text: String?) -> String? {
+    override internal func isValid(text: String?) -> String? {
         if text?.isEmpty != false {
             return localize("error_password_empty")
         }

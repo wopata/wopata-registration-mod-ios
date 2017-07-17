@@ -56,7 +56,7 @@ class ResetViewController: SHKeyboardViewController {
         emailField.tintColor = config.ctaBackgroundColor
         container.addSubview(emailField)
         emailField.snp.makeConstraints {
-            $0.top.equalTo(40)
+            $0.top.equalTo(35)
             $0.left.equalTo(35)
             $0.centerX.equalToSuperview()
         }

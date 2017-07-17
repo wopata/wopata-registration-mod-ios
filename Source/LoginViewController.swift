@@ -93,6 +93,13 @@ class LoginViewController: UIViewController {
         } else {
             text.text = nil
         }
+
+        if config.isClosable == false {
+            navigationItem.rightBarButtonItem = nil
+        } else {
+            let close = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stop))
+            navigationItem.rightBarButtonItem = close
+        }
     }
 
     private func setupNavigation() {
@@ -100,9 +107,6 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.tintColor = .white
-
-        let close = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stop))
-        navigationItem.rightBarButtonItem = close
     }
 
     func start() {

@@ -128,7 +128,7 @@ class SignInViewController: SHKeyboardViewController {
             form.addSubview(emailField)
             emailField.snp.makeConstraints {
                 $0.left.right.equalToSuperview()
-                $0.top.equalTo(28)
+                $0.top.equalTo(0)
             }
             emailField.valueChanged = { self.emailValue = $0 }
 

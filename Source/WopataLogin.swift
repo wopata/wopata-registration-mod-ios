@@ -41,6 +41,8 @@ public class WopataLoginConfiguration {
 
     public var font: UIFont = .systemFont(ofSize: 14)
 
+    public var isClosable: Bool = false
+
     public var signinModes: [SigninMode] = [.google, .facebook, .email]
 
     public static let `default`: WopataLoginConfiguration = {
