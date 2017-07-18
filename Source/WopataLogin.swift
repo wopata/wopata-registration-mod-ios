@@ -114,6 +114,6 @@ public class WopataLogin {
     }
 }
 
-protocol ErrorHandler {
+public protocol ErrorHandler {
     func addError(field: WopataLoginField, message: String)
 }

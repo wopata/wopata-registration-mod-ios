@@ -39,6 +39,11 @@ class SignUpViewController: SHKeyboardViewController {
         title = localize("sign_up_title")
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        title = ""
+    }
+
     override func loadView() {
         super.loadView()
 

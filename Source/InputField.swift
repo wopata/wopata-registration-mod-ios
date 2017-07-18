@@ -9,29 +9,51 @@
 import UIKit
 import SnapKit
 
-public class InputField: UIView, UITextFieldDelegate {
+open class InputField: UIView, UITextFieldDelegate {
     let legend = UILabel()
     let errorLabel = UILabel()
     let field = UITextField()
 
     var font: UIFont = .systemFont(ofSize: 17)
-    var value: String? = nil
+    public var value: String? = nil {
+        didSet { field.text = value }
+    }
     var label: String = ""
+    var offset: CGFloat = -1
 
-    var valueChanged: ((String?) -> Void)?
-    var returnKeyPressed: (() -> Void)!
+    public var valueChanged: ((String?) -> Void)?
+    public var returnKeyPressed: (() -> Void)!
+    public var returnKeyType: UIReturnKeyType = .next {
+        didSet { field.returnKeyType = returnKeyType }
+    }
+    public var keyboardType: UIKeyboardType = .default {
+        didSet { field.keyboardType = keyboardType }
+    }
+    override open var inputView: UIView? {
+        get { return field.inputView }
+        set { field.inputView = newValue }
+    }
+    private var _inputAccessoryView: UIView?
+    open override var inputAccessoryView: UIView? {
+        get { return _inputAccessoryView }
+        set {
+            field.inputAccessoryView = newValue
+            _inputAccessoryView = newValue
+        }
+    }
 
-    override public var tintColor: UIColor! {
+    override open var tintColor: UIColor! {
         didSet {
             field.tintColor = tintColor
         }
     }
 
-    init(font: UIFont, label: String, value: String? = nil) {
+    public init(font: UIFont, label: String, value: String? = nil) {
         super.init(frame: .zero)
         self.font = font
         self.value = value
         self.label = label
+
         loadView()
     }
 
@@ -46,6 +68,7 @@ public class InputField: UIView, UITextFieldDelegate {
         field.text = value
         field.autocapitalizationType = .none
         field.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        field.returnKeyType = .next
 
         returnKeyPressed = {
             self.field.resignFirstResponder()
@@ -53,7 +76,7 @@ public class InputField: UIView, UITextFieldDelegate {
         
         addSubview(field)
         field.snp.makeConstraints {
-            $0.top.equalTo(25)
+            $0.top.equalTo(25).priority(.high)
             $0.left.right.equalToSuperview()
         }
 
@@ -62,8 +85,8 @@ public class InputField: UIView, UITextFieldDelegate {
         addSubview(line)
         line.snp.makeConstraints {
             $0.left.right.equalToSuperview()
-            $0.height.equalTo(1)
-            $0.top.equalTo(field.snp.bottom).offset(10)
+            $0.height.equalTo(1).priority(.high)
+            $0.top.equalTo(field.snp.bottom).offset(10).priority(.high)
         }
 
         errorLabel.textColor = UIColor(red: 1, green: 91.0/255, blue: 91.0/255, alpha: 1)
@@ -73,35 +96,29 @@ public class InputField: UIView, UITextFieldDelegate {
         addSubview(errorLabel)
         errorLabel.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
-            $0.top.equalTo(line.snp.bottom).offset(3)
+            $0.top.equalTo(line.snp.bottom).offset(3).priority(.high)
         }
 
         legend.text = label
+        legend.textColor = UIColor(white: 0, alpha: 0.5)
         legend.isUserInteractionEnabled = false
         legend.font = font.withSize(17)
         addSubview(legend)
         legend.snp.makeConstraints {
             $0.left.equalToSuperview()
         }
+
+        offset = legend.intrinsicContentSize.width * 0.1
         if field.text?.isEmpty == false {
-            self.legend.textColor = self.tintColor
-            self.legend.transform = CGAffineTransform(scaleX: 0.82, y: 0.82)
+            self.legend.transform = CGAffineTransform(scaleX: 0.82, y: 0.82).translatedBy(x: -offset, y: 0)
             legend.snp.makeConstraints {
                 $0.top.equalToSuperview()
             }
         } else {
-            legend.textColor = UIColor(white: 0, alpha: 0.5)
             legend.snp.makeConstraints {
                 $0.top.equalTo(field)
             }
         }
-    }
-
-    var offset: CGFloat = -1
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        guard offset < 0 else { return }
-        offset = self.legend.frame.width * 0.1
     }
 
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -158,8 +175,12 @@ public class InputField: UIView, UITextFieldDelegate {
         valueChanged?(value)
     }
 
-    override public func becomeFirstResponder() -> Bool {
+    override open func becomeFirstResponder() -> Bool {
         return field.becomeFirstResponder()
+    }
+
+    override open func resignFirstResponder() -> Bool {
+        return field.resignFirstResponder()
     }
 
     func resetErrors() {
@@ -178,11 +199,11 @@ public class InputField: UIView, UITextFieldDelegate {
         return true
     }
 
-    internal func isValid(text: String?) -> String? {
+    open func isValid(text: String?) -> String? {
         return nil
     }
 
-    func addError(error: String) {
+    public func addError(error: String) {
         UIView.animate(withDuration: 0.1) {
             self.field.textColor = UIColor(red: 1, green: 91.0/255, blue: 91.0/255, alpha: 1)
             self.errorLabel.text = error
@@ -199,7 +220,7 @@ class EmailField: InputField {
         field.returnKeyType = .next
     }
 
-    override internal func isValid(text: String?) -> String? {
+    override func isValid(text: String?) -> String? {
         guard let text = text, !text.isEmpty else {
             return localize("error_email_empty")
         }
@@ -222,7 +243,7 @@ class PasswordField: InputField {
         field.returnKeyType = .done
     }
 
-    override internal func isValid(text: String?) -> String? {
+    override func isValid(text: String?) -> String? {
         if text?.isEmpty != false {
             return localize("error_password_empty")
         }
