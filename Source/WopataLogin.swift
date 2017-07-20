@@ -70,7 +70,7 @@ public class User {
     }
 }
 
-public enum WopataLoginField { case email, password, facebook, google }
+public enum WopataLoginField { case email, password, facebook, google, other }
 public class WopataLogin {
     public var config = WopataLoginConfiguration.default
     public var signedIn: ((User) -> Void)?
