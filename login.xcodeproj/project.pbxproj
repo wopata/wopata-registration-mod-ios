@@ -27,6 +27,7 @@
 		F01BAB171F0D405200294C66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F03B75031EF7C9130027CE7D /* login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = login.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F0E15C611F30D10800C62EC5 /* WopataLogin.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WopataLogin.podspec; sourceTree = SOURCE_ROOT; };
 		F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Example/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		F0E2DE3A1EF90CD0007DD38A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Example/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F0E2DE401EF90CD0007DD38A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Example/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -86,6 +87,7 @@
 		F03B75051EF7C9130027CE7D /* login */ = {
 			isa = PBXGroup;
 			children = (
+				F0E15C611F30D10800C62EC5 /* WopataLogin.podspec */,
 				F0B21ECB1EFA738F0039DB3E /* GoogleService-Info.plist */,
 				F0E2DE391EF90CD0007DD38A /* AppDelegate.swift */,
 				F0E2DE411EF90CD0007DD38A /* ViewController.swift */,
