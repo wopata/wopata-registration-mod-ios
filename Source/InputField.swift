@@ -219,6 +219,7 @@ class EmailField: InputField {
         field.keyboardType = .emailAddress
         field.returnKeyType = .next
         field.autocapitalizationType = .none
+        field.autocorrectionType = .no
     }
 
     override func isValid(text: String?) -> String? {
