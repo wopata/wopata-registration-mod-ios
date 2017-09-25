@@ -29,8 +29,9 @@ extension UIFont {
 
 extension String {
     func nsRange(from range: Range<Index>) -> NSRange {
-        let lower = UTF16View.Index(range.lowerBound, within: utf16)
-        let upper = UTF16View.Index(range.upperBound, within: utf16)
+        guard let lower = UTF16View.Index(range.lowerBound, within: utf16),
+            let upper = UTF16View.Index(range.upperBound, within: utf16)
+            else { return NSRange() }
         return NSRange(location: utf16.startIndex.distance(to: lower), length: lower.distance(to: upper))
     }
 }
