@@ -1,5 +1,8 @@
 WopataLogin is a social/native sign-signup module for iOS
 
+#### ⚠️ **To use with Swift 3.x please ensure you are using >= 3.0.0** ⚠️ 
+#### ⚠️ **To use with Swift 4.x please ensure you are using >= 4.0.0** ⚠️ 
+
 ## Contents
 
 - [Requirements](#requirements)
@@ -32,7 +35,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'WopataLogin', '~> 0.6.0'
+    pod 'WopataLogin', '~> 3.0.0'
 end
 ```
 

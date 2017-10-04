@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'WopataLogin'
-  s.version          = '0.8.2'
+  s.version          = '3.0.0'
   s.summary          = 'WopataLogin is a social/native sign-signup module for iOS'
 
   s.homepage         = 'git@github.com:wopata/wopata-registration-mod-ios.git'
