@@ -57,8 +57,8 @@ class SignInViewController: SHKeyboardViewController {
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: UIFont.systemFont(ofSize: 18)
+            .foregroundColor: UIColor.white,
+            .font: UIFont.systemFont(ofSize: 18)
         ]
     }
 
@@ -206,7 +206,7 @@ extension SignInViewController: ErrorHandler {
 }
 
 extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
-    func loginWithFacebook() {
+    @objc func loginWithFacebook() {
         let login = FBSDKLoginManager()
         login.logIn(withReadPermissions: config.facebookPermissions, from: self) { result, error in
             guard let result = result, error == nil, !result.isCancelled else { return }
@@ -214,13 +214,13 @@ extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
         }
     }
 
-    func loginWithGoogle() {
+    @objc func loginWithGoogle() {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signIn()
     }
 
-    func loginWithEmail() {
+    @objc func loginWithEmail() {
         self.signedIn?(User(source: .native, email: emailValue, password: pwdValue))
     }
 
@@ -234,11 +234,11 @@ extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
         // uh... nothing?
     }
 
-    func signUp() {
+    @objc func signUp() {
         navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
 
-    func resetEmail() {
+    @objc func resetEmail() {
         navigationController?.pushViewController(ResetViewController(), animated: true)
     }
 }

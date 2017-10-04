@@ -169,7 +169,7 @@ extension SignUpViewController: ErrorHandler {
 }
 
 extension SignUpViewController: GIDSignInDelegate, GIDSignInUIDelegate {
-    func signupWithFacebook() {
+    @objc func signupWithFacebook() {
         let login = FBSDKLoginManager()
         login.logIn(withReadPermissions: config.facebookPermissions, from: self) { result, error in
             guard let result = result, error == nil, !result.isCancelled else { return }
@@ -177,13 +177,13 @@ extension SignUpViewController: GIDSignInDelegate, GIDSignInUIDelegate {
         }
     }
 
-    func signupWithGoogle() {
+    @objc func signupWithGoogle() {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signIn()
     }
 
-    func signupWithEmail() {
+    @objc func signupWithEmail() {
         self.signedUp?(User(source: .native, email: emailValue, password: pwdValue))
     }
 
@@ -197,7 +197,7 @@ extension SignUpViewController: GIDSignInDelegate, GIDSignInUIDelegate {
         // uh... nothing?
     }
 
-    func signIn() {
+    @objc func signIn() {
         _ = navigationController?.popViewController(animated: true)
     }
 }

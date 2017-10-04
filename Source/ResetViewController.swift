@@ -90,7 +90,7 @@ extension ResetViewController: ErrorHandler {
 }
 
 extension ResetViewController {
-    func resetWithEmail() {
+    @objc func resetWithEmail() {
         self.reset?(User(source: .native, email: emailValue))
     }
 

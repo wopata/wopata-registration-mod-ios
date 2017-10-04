@@ -84,10 +84,10 @@ class LoginViewController: UIViewController {
             let attributedString = NSAttributedString(
                 string: landing,
                 attributes: [
-                    NSFontAttributeName: config.landingTextFont,
-                    NSParagraphStyleAttributeName: paragraph,
-                    NSForegroundColorAttributeName: config.landingTextColor,
-                    NSKernAttributeName: 1.8
+                    .font: config.landingTextFont,
+                    .paragraphStyle: paragraph,
+                    .foregroundColor: config.landingTextColor,
+                    .kern: 1.8
                 ])
             text.attributedText = attributedString
         } else {
@@ -109,11 +109,11 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
     }
 
-    func start() {
+    @objc func start() {
         navigationController?.pushViewController(SignInViewController(), animated: true)
     }
 
-    func stop() {
+    @objc func stop() {
         dismiss(animated: true)
     }
 }

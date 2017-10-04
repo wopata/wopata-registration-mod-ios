@@ -170,7 +170,7 @@ open class InputField: UIView, UITextFieldDelegate {
         return true
     }
 
-    func editingChanged() {
+    @objc func editingChanged() {
         let value = (isValid(text: field.text) == nil) ? field.text : nil
         valueChanged?(value)
     }

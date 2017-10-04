@@ -5,38 +5,22 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - Crashlytics (3.8.4):
+  - Crashlytics (3.8.6):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.11)
-  - FacebookCore (0.2.0):
-    - Bolts (~> 1.8)
-    - FBSDKCoreKit (~> 4.15)
-  - FacebookLogin (0.2.0):
-    - Bolts (~> 1.8)
-    - FacebookCore (~> 0.2)
-    - FBSDKCoreKit (~> 4.15)
-    - FBSDKLoginKit (~> 4.15)
-  - FacebookShare (0.2.0):
-    - Bolts (~> 1.8)
-    - FacebookCore (~> 0.2)
-    - FBSDKCoreKit (~> 4.15)
-    - FBSDKShareKit (~> 4.15)
-  - FBSDKCoreKit (4.22.1):
+  - Fabric (1.6.13)
+  - FBSDKCoreKit (4.27.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.22.1):
+  - FBSDKLoginKit (4.27.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.22.1):
+  - FBSDKShareKit (4.27.0):
     - FBSDKCoreKit
   - KVNProgress (2.3.1)
-  - SnapKit (3.2.0)
-  - WopataLogin (0.5.0):
-    - FacebookCore (~> 0.2.0)
-    - FacebookLogin (~> 0.2.0)
-    - FacebookShare (~> 0.2.0)
-    - FBSDKCoreKit (~> 4.22.1)
-    - FBSDKLoginKit (~> 4.22.1)
-    - FBSDKShareKit (~> 4.22.1)
-    - SnapKit (~> 3.2.0)
+  - SnapKit (4.0.0)
+  - WopataLogin (4.0.0):
+    - FBSDKCoreKit (~> 4.27)
+    - FBSDKLoginKit (~> 4.27)
+    - FBSDKShareKit (~> 4.27)
+    - SnapKit (~> 4.0.0)
 
 DEPENDENCIES:
   - Crashlytics
@@ -50,17 +34,14 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
-  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
-  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
-  FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
-  FBSDKCoreKit: 9c2daf0162214d6d2e21cf8208a9c6c2a2e42b9c
-  FBSDKLoginKit: 00cf28916b9f0169763a3d61985d745b579fe304
-  FBSDKShareKit: 1cbd0fdc2bb3277dd3522512855dcf1f4088f734
+  Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
+  Fabric: 2fb5676bc811af011a04513451f463dac6803206
+  FBSDKCoreKit: ebc6c5f5b3f0e72396041050e2266781a38ac587
+  FBSDKLoginKit: 887be4b7452e1c5a3cc4485ce152529965a0c41e
+  FBSDKShareKit: 4f83956d4ca2960730fe7588a168eb8d535c06dc
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  WopataLogin: 45407c4edf38f532a85db4872ed7282a8db90c5e
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  WopataLogin: 1fb9a7ba119abae67798b9d929d55a25d7fd9b03
 
 PODFILE CHECKSUM: 7b652ed4a708eaa863589336e3372353a2f167c6
 

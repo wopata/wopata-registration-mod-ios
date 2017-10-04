@@ -32,11 +32,11 @@ public class WopataLoginConfiguration {
 
     public var facebookPermissions: [String] = ["public_profile"]
 
-    public var landingTextFont: UIFont = .systemFont(ofSize: 18, weight: UIFontWeightMedium)
+    public var landingTextFont: UIFont = .systemFont(ofSize: 18, weight: .medium)
     public var landingTextColor: UIColor = .white
 
     public var ctaBackgroundColor: UIColor = UIColor(red: 73.0/255, green: 144.0/255, blue: 226.0/255, alpha: 1)
-    public var ctaFont: UIFont = .systemFont(ofSize: 15, weight: UIFontWeightHeavy)
+    public var ctaFont: UIFont = .systemFont(ofSize: 15, weight: .heavy)
     public var ctaTextColor: UIColor = .white
 
     public var font: UIFont = .systemFont(ofSize: 14)

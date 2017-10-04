@@ -24,12 +24,12 @@ class ButtonBuilder {
         let attributedString = NSMutableAttributedString(
             string: title,
             attributes: [
-                NSForegroundColorAttributeName: UIColor.black,
-                NSFontAttributeName: config.font.withSize(15)
+                .foregroundColor: UIColor.black,
+                .font: config.font.withSize(15)
             ])
         if let range = title.range(of: "Google") {
             let nsrange = title.nsRange(from: range)
-            attributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 15, weight: UIFontWeightBold), range: nsrange)
+            attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 15, weight: .bold), range: nsrange)
         }
         button.setAttributedTitle(attributedString, for: .normal)
 
@@ -50,12 +50,12 @@ class ButtonBuilder {
         let attributedString = NSMutableAttributedString(
             string: title,
             attributes: [
-                NSForegroundColorAttributeName: UIColor.white,
-                NSFontAttributeName: config.font.withSize(15)
+                .foregroundColor: UIColor.white,
+                .font: config.font.withSize(15)
             ])
         if let range = title.range(of: "Facebook") {
             let nsrange = title.nsRange(from: range)
-            attributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 15, weight: UIFontWeightBold), range: nsrange)
+            attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 15, weight: .bold), range: nsrange)
         }
         button.setAttributedTitle(attributedString, for: .normal)
 
@@ -124,16 +124,16 @@ class ButtonBuilder {
         let attributedString = NSMutableAttributedString(
             string: title1,
             attributes: [
-                NSForegroundColorAttributeName: UIColor.black,
-                NSFontAttributeName: config.font.withSize(15)
+                .foregroundColor: UIColor.black,
+                .font: config.font.withSize(15)
             ])
         attributedString.append(NSAttributedString(string: " "))
         attributedString.append(NSAttributedString(
             string: title2,
             attributes: [
-                NSForegroundColorAttributeName: config.ctaBackgroundColor,
-                NSFontAttributeName: config.font.withSize(15).bold(),
-                NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue
+                .foregroundColor: config.ctaBackgroundColor,
+                .font: config.font.withSize(15).bold(),
+                .underlineStyle: NSUnderlineStyle.styleSingle.rawValue
             ]))
 
         let button = UIButton(type: .custom)
