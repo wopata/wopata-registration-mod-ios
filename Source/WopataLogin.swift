@@ -29,6 +29,7 @@ public class WopataLoginConfiguration {
     public var landingBackgroundImage: UIImage? = nil
     public var landingBrandView: UIView? = nil
     public var landingText: String? = nil
+    public var landingAttributedText: NSAttributedString? = nil
 
     public var facebookPermissions: [String] = ["public_profile"]
 

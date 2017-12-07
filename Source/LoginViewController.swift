@@ -77,7 +77,9 @@ class LoginViewController: UIViewController {
             brand.snp.makeConstraints { $0.edges.equalToSuperview() }
         }
 
-        if let landing = config.landingText {
+        if let landing = config.landingAttributedText {
+            text.attributedText = landing
+        } else if let landing = config.landingText {
             let paragraph = NSMutableParagraphStyle()
             paragraph.lineHeightMultiple = 1.5
             paragraph.alignment = .center
