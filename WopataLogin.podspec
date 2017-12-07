@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'WopataLogin'
-  s.version          = '4.0.0'
+  s.version          = '4.1.0'
   s.summary          = 'WopataLogin is a social/native sign-signup module for iOS'
 
   s.homepage         = 'git@github.com:wopata/wopata-registration-mod-ios.git'
@@ -18,9 +18,6 @@ Pod::Spec.new do |s|
   }
 
   s.dependency 'SnapKit', '~> 4.0.0'
-# s.dependency 'FacebookCore', '~> 0.2.0'
-# s.dependency 'FacebookLogin', '~> 0.2.0'
-# s.dependency 'FacebookShare', '~> 0.2.0'
   s.dependency 'FBSDKCoreKit', '~> 4.27'
   s.dependency 'FBSDKLoginKit', '~> 4.27'
   s.dependency 'FBSDKShareKit', '~> 4.27'
