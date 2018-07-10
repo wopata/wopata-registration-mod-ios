@@ -13,6 +13,9 @@ open class InputField: UIView, UITextFieldDelegate {
     let legend = UILabel()
     let errorLabel = UILabel()
     let field = UITextField()
+    let toggleVisibility = UIButton(type: UIButtonType.custom)
+    
+    var showToggleVisibility = false
 
     var font: UIFont = .systemFont(ofSize: 17)
     public var value: String? = nil {
@@ -48,11 +51,12 @@ open class InputField: UIView, UITextFieldDelegate {
         }
     }
 
-    public init(font: UIFont, label: String, value: String? = nil) {
+    public init(font: UIFont, label: String, showToggleVisibility: Bool, value: String? = nil) {
         super.init(frame: .zero)
         self.font = font
         self.value = value
         self.label = label
+        self.showToggleVisibility = showToggleVisibility
 
         loadView()
     }
@@ -74,12 +78,24 @@ open class InputField: UIView, UITextFieldDelegate {
             self.field.resignFirstResponder()
         }
         
+        addSubview(toggleVisibility)
+        toggleVisibility.snp.makeConstraints {
+            $0.top.equalTo(20).priority(.high)
+            $0.right.equalToSuperview()
+            $0.width.equalTo(showToggleVisibility ? 30 : 0)
+            $0.height.equalTo(29)
+        }
+        toggleVisibility.setImage(UIImage(named: "icEyeClosed", in: bundle, compatibleWith: nil), for: .normal)
+        toggleVisibility.addTarget(self, action: #selector(visibilityChanged), for: .touchUpInside)
+        toggleVisibility.imageView?.contentMode = .scaleAspectFit
+        
         addSubview(field)
         field.snp.makeConstraints {
             $0.top.equalTo(25).priority(.high)
-            $0.left.right.equalToSuperview()
+            $0.right.equalTo(toggleVisibility.snp.left)
+            $0.left.equalToSuperview()
         }
-
+        
         let line = UIView()
         line.backgroundColor = UIColor(white: 0, alpha: 0.15)
         addSubview(line)
@@ -174,6 +190,12 @@ open class InputField: UIView, UITextFieldDelegate {
         let value = (isValid(text: field.text) == nil) ? field.text : nil
         valueChanged?(value)
     }
+    
+    @objc func visibilityChanged() {
+        field.isSecureTextEntry = !field.isSecureTextEntry
+        let imageName = field.isSecureTextEntry ? "icEyeClosed" : "icEyeOpen"
+        toggleVisibility.setImage(UIImage(named: imageName, in: bundle, compatibleWith: nil), for: .normal)
+    }
 
     override open func becomeFirstResponder() -> Bool {
         return field.becomeFirstResponder()
@@ -214,7 +236,7 @@ open class InputField: UIView, UITextFieldDelegate {
 
 class EmailField: InputField {
     convenience init(font: UIFont) {
-        self.init(font: font, label: localize("email_address"), value: nil)
+        self.init(font: font, label: localize("email_address"), showToggleVisibility: false, value: nil)
         field.isSecureTextEntry = false
         field.keyboardType = .emailAddress
         field.returnKeyType = .next
@@ -238,7 +260,7 @@ class EmailField: InputField {
 
 class PasswordField: InputField {
     convenience init(font: UIFont) {
-        self.init(font: font, label: localize("password"), value: nil)
+        self.init(font: font, label: localize("password"), showToggleVisibility: true, value: nil)
         field.isSecureTextEntry = true
         field.keyboardType = .default
         field.returnKeyType = .done

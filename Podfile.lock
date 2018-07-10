@@ -16,7 +16,7 @@ PODS:
     - FBSDKCoreKit
   - KVNProgress (2.3.1)
   - SnapKit (4.0.0)
-  - WopataLogin (4.0.0):
+  - WopataLogin (4.1.0):
     - FBSDKCoreKit (~> 4.27)
     - FBSDKLoginKit (~> 4.27)
     - FBSDKShareKit (~> 4.27)
@@ -27,6 +27,17 @@ DEPENDENCIES:
   - Fabric
   - KVNProgress
   - WopataLogin (from `.`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Bolts
+    - Crashlytics
+    - Fabric
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - KVNProgress
+    - SnapKit
 
 EXTERNAL SOURCES:
   WopataLogin:
@@ -41,8 +52,8 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 4f83956d4ca2960730fe7588a168eb8d535c06dc
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  WopataLogin: 1fb9a7ba119abae67798b9d929d55a25d7fd9b03
+  WopataLogin: e914baeaf310ddea2fca995d1d0ea55b8c80dbed
 
 PODFILE CHECKSUM: 7b652ed4a708eaa863589336e3372353a2f167c6
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.3
